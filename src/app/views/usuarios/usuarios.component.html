@@ -1,0 +1,21 @@
+<div class="card elev-sm">
+  <div class="flex justify-between items-center">
+    <div class="card-title">Usuarios</div>
+    <button class="btn btn-primary" type="button" (click)="abrirCrear()">Agregar usuario</button>
+  </div>
+
+  @if (error()) {
+    <div class="error-text mt-2">{{ error() }}</div>
+  }
+
+  @if (cargando()) {
+    <div class="text-muted mt-2">Cargando usuarios…</div>
+  } @else {
+    <app-data-table
+      [columns]="columns"
+      [data]="usuarios()"
+      [actions]="actions"
+      emptyMessage="No hay usuarios registrados en tu familia."
+    />
+  }
+</div>

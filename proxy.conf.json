@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://localhost/finanzFamily/public",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

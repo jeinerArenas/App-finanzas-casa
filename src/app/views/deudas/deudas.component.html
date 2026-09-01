@@ -1,0 +1,23 @@
+<div class="card elev-sm">
+  <div class="flex justify-between items-center gap-3 flex-wrap">
+    <div>
+      <div class="card-title">Deudas y pagos de cuotas</div>
+      <div class="text-muted text-xs max-w-[520px]">
+        Registra tarjetas de crédito, préstamos o compras a cuotas. Cuando registres un gasto en
+        Movimientos podrás asociarlo a una deuda y abonar una, varias o todas las cuotas restantes.
+      </div>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="abrirCrear()">Registrar deuda</button>
+  </div>
+
+  @if (error()) {
+    <div class="error-text mt-2">{{ error() }}</div>
+  }
+
+  <app-data-table
+    [columns]="columns"
+    [data]="deudas()"
+    [actions]="actions"
+    emptyMessage="Aún no hay deudas registradas."
+  />
+</div>

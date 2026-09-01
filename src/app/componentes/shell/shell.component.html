@@ -1,0 +1,14 @@
+<div class="app-shell">
+  @if (isMobile() && sidebarOpen()) {
+    <div class="shell-backdrop" (click)="closeSidebar()"></div>
+  }
+
+  <app-sidebar [mobile]="isMobile()" [open]="sidebarOpen()" (linkClick)="closeSidebar()" />
+
+  <div class="shell-main">
+    <app-topbar [isMobile]="isMobile()" (toggleSidebarClick)="toggleSidebar()" />
+    <div class="shell-content" [class.shell-content-mobile]="isMobile()">
+      <router-outlet />
+    </div>
+  </div>
+</div>

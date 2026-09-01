@@ -1,0 +1,39 @@
+<div class="auth-page">
+  <div class="auth-shell elev-lg">
+    <div class="auth-visual">
+      <img src="/assets/img/logo-full.png" alt="FinanzFamily" class="auth-logo" />
+      <p class="auth-tagline">Todas las finanzas de tu familia, organizadas en un solo lugar.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <div class="auth-form-header">
+        <div class="auth-form-title">Bienvenido de nuevo</div>
+        <p class="auth-form-subtitle">Ingresa tus datos para acceder a tu cuenta familiar.</p>
+      </div>
+
+      <form class="flex flex-col gap-2.5" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="field">
+          <label>Correo</label>
+          <input class="input" type="email" placeholder="correo@ejemplo.com" formControlName="email" />
+          @if (getErrorMessage(form.controls.email, 'El correo'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input class="input" type="password" placeholder="••••••••" formControlName="password" />
+          @if (getErrorMessage(form.controls.password, 'La contraseña'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+
+        @if (error()) {
+          <div class="error-text">{{ error() }}</div>
+        }
+
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="loading() || form.invalid">Iniciar sesión</button>
+        <button class="btn btn-ghost" type="button" routerLink="/registro">¿No tienes cuenta? Regístrate</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="card elev-sm">
+  <div class="card-title">Categorías y presupuestos</div>
+  <div class="text-muted text-xs mb-2">Define un límite mensual opcional por categoría para recibir avisos.</div>
+
+  <app-data-table [columns]="columns()" [data]="stats()" emptyMessage="No hay categorías registradas." />
+
+  <ng-template #budgetCell let-c>
+    <input
+      class="input"
+      type="number"
+      placeholder="Sin límite"
+      [value]="c.budget || ''"
+      (change)="onBudgetChange(c.name, $any($event.target).value)"
+    />
+  </ng-template>
+
+  <ng-template #overCell let-c>
+    @if (c.over) {
+      <span class="tag tag-accent">Excedido</span>
+    }
+  </ng-template>
+
+  <div class="flex gap-2 mt-2.5 max-w-[340px]">
+    <input class="input" placeholder="Nueva categoría" name="newCategory" [(ngModel)]="newCategory" />
+    <button class="btn btn-secondary" (click)="addCategory()">Agregar</button>
+  </div>
+</div>

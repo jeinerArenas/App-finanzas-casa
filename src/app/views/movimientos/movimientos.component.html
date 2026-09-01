@@ -1,0 +1,172 @@
+<div class="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-3.5">
+  <div class="card elev-sm">
+    <div class="card-title">{{ editingIncomeId() ? 'Editar ingreso' : 'Nuevo ingreso' }}</div>
+    <form class="flex flex-col gap-2 mt-1.5" [formGroup]="incomeForm" (ngSubmit)="saveOrAddIncome()">
+      <div class="field">
+        <label>Concepto</label>
+        <input class="input" placeholder="Sueldo, extra, bono..." formControlName="concept" />
+        @if (getErrorMessage(incomeForm.controls.concept, 'El concepto'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="field">
+          <label>Monto</label>
+          <input class="input" type="number" placeholder="0" formControlName="amount" />
+          @if (getErrorMessage(incomeForm.controls.amount, 'El monto'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Fecha</label>
+          <input class="input" type="date" formControlName="incomeDate" />
+          @if (getErrorMessage(incomeForm.controls.incomeDate, 'La fecha'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+      </div>
+      <div class="field">
+        <label>Quién</label>
+        <select class="input" formControlName="idUser">
+          <option [ngValue]="null" disabled>Selecciona un miembro</option>
+          @for (m of miembros(); track m.id_user) {
+            <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+          }
+        </select>
+        @if (getErrorMessage(incomeForm.controls.idUser, 'Quién'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      @if (incomeError()) {
+        <div class="error-text">{{ incomeError() }}</div>
+      }
+      <div class="flex gap-2">
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="incomeForm.invalid">
+          <svg width="14" height="14" viewBox="0 0 256 256" fill="none"><path d="M128 40v176M40 128h176" stroke="currentColor" stroke-width="24" stroke-linecap="round"></path></svg>
+          {{ editingIncomeId() ? 'Guardar cambios' : 'Agregar ingreso' }}
+        </button>
+        @if (editingIncomeId()) {
+          <button class="btn btn-secondary" type="button" (click)="cancelEditIncome()">Cancelar</button>
+        }
+      </div>
+    </form>
+
+    <app-data-table
+      [columns]="incomeColumns"
+      [data]="incomes()"
+      [actions]="incomeActions"
+      emptyMessage="Aún no hay ingresos registrados este mes."
+    />
+  </div>
+
+  <div class="card elev-sm mb-3">
+    <div class="card-title">{{ editingExpenseId() ? 'Editar gasto' : 'Nuevo gasto' }}</div>
+    <form class="flex flex-col gap-2 mt-1.5" [formGroup]="expenseForm" (ngSubmit)="saveOrAddExpense()">
+      <div class="field">
+        <label>Categoría</label>
+        <select class="input" formControlName="idCategory">
+          <option [ngValue]="null" disabled>Selecciona una categoría</option>
+          @for (cat of categorias(); track cat.id_category) {
+            <option [ngValue]="cat.id_category">{{ cat.category_name }}</option>
+          }
+        </select>
+        @if (getErrorMessage(expenseForm.controls.idCategory, 'La categoría'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+
+      @if (!editingExpenseId()) {
+        <div class="field">
+          <label>Deuda relacionada (opcional)</label>
+          <select class="input" formControlName="idDebt">
+            <option [ngValue]="null">Ninguna (gasto normal)</option>
+            @for (d of deudasActivas(); track d.id_debt) {
+              <option [ngValue]="d.id_debt">{{ d.description }} · Saldo: {{ fmt(d.pending_balance) }}</option>
+            }
+          </select>
+        </div>
+
+        @if (selectedDebtId()) {
+          <div class="field">
+            <label>Cuotas a pagar</label>
+            <select class="input" formControlName="installmentsCount">
+              <option [ngValue]="null" disabled>Selecciona cuántas cuotas</option>
+              @for (n of cuotasDisponibles(); track n) {
+                <option [ngValue]="n">
+                  {{ n }} {{ n === 1 ? 'cuota' : 'cuotas' }}{{ n === cuotasDisponibles().length ? ' (paga el saldo total)' : '' }}
+                </option>
+              }
+            </select>
+          </div>
+        }
+      } @else if (editingDebtRow()) {
+        <div class="text-muted text-xs">
+          Este gasto es un pago de la deuda "{{ editingDebtDescripcion() }}" ({{ editingDebtRow()!.installments_count }}
+          {{ editingDebtRow()!.installments_count === 1 ? 'cuota' : 'cuotas' }}). El monto no se puede modificar aquí.
+        </div>
+      }
+
+      <div class="grid grid-cols-2 gap-2">
+        <div class="field">
+          <label>Monto</label>
+          <input class="input" type="number" placeholder="0" formControlName="amount" />
+          @if (getErrorMessage(expenseForm.controls.amount, 'El monto'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Fecha</label>
+          <input class="input" type="date" formControlName="expenseDate" />
+          @if (getErrorMessage(expenseForm.controls.expenseDate, 'La fecha'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+      </div>
+      <div class="field">
+        <label>Quién</label>
+        <select class="input" formControlName="idUser">
+          <option [ngValue]="null" disabled>Selecciona un miembro</option>
+          @for (m of miembros(); track m.id_user) {
+            <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+          }
+        </select>
+        @if (getErrorMessage(expenseForm.controls.idUser, 'Quién'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label>Nota</label>
+        <input class="input" placeholder="Descripción breve" formControlName="note" />
+      </div>
+      @if (expenseError()) {
+        <div class="error-text">{{ expenseError() }}</div>
+      }
+      <div class="flex gap-2">
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="expenseForm.invalid">
+          <svg width="14" height="14" viewBox="0 0 256 256" fill="none"><path d="M128 40v176M40 128h176" stroke="currentColor" stroke-width="24" stroke-linecap="round"></path></svg>
+          {{ editingExpenseId() ? 'Guardar cambios' : 'Agregar gasto' }}
+        </button>
+        @if (editingExpenseId()) {
+          <button class="btn btn-secondary" type="button" (click)="cancelEditExpense()">Cancelar</button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card elev-sm mt-3">
+  <div class="card-title">Gastos de {{ month.monthLabel() }}</div>
+  <app-data-table
+    [columns]="expenseColumns()"
+    [data]="expenses()"
+    [actions]="expenseActions"
+    emptyMessage="Aún no hay gastos registrados este mes."
+  />
+
+  <ng-template #categoriaCell let-row>
+    <span class="tag tag-outline">{{ row.category_name }}</span>
+    @if (row.id_debt !== null) {
+      <span class="tag tag-accent" title="Pago de deuda">{{ row.installments_count }} cuota(s)</span>
+    }
+  </ng-template>
+</div>

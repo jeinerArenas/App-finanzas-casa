@@ -1,0 +1,70 @@
+<div class="auth-page">
+  <div class="auth-shell elev-lg">
+    <div class="auth-visual">
+      <img src="/assets/img/logo-full.png" alt="FinanzFamily" class="auth-logo" />
+      <p class="auth-tagline">Crea tu cuenta familiar y empieza a llevar el control de tus gastos.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <div class="auth-form-header">
+        <div class="auth-form-title">Crear cuenta</div>
+        <p class="auth-form-subtitle">Registra a tu familia para empezar a organizar sus finanzas.</p>
+      </div>
+
+      <form class="flex flex-col gap-2.5" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="field">
+          <label>Nombre de la familia</label>
+          <input class="input" placeholder="Familia Pérez" formControlName="familyName" soloTexto />
+          @if (getErrorMessage(form.controls.familyName, 'El nombre de la familia'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Cédula / documento</label>
+          <input class="input" placeholder="1000000001" formControlName="documentNumber" soloNumeros />
+          @if (getErrorMessage(form.controls.documentNumber, 'El documento'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Nombre</label>
+          <input class="input" placeholder="Tu nombre" formControlName="fullName" soloTexto />
+          @if (getErrorMessage(form.controls.fullName, 'El nombre'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Correo</label>
+          <input class="input" type="email" placeholder="correo@ejemplo.com" formControlName="email" />
+          @if (getErrorMessage(form.controls.email, 'El correo'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Contraseña</label>
+          <input class="input" type="password" placeholder="••••••••" formControlName="password" />
+          @if (getErrorMessage(form.controls.password, 'La contraseña'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+        </div>
+        <div class="field">
+          <label>Confirmar contraseña</label>
+          <input class="input" type="password" placeholder="••••••••" formControlName="confirmPassword" />
+          @if (getErrorMessage(form.controls.confirmPassword, 'La confirmación'); as msg) {
+            <div class="error-text">{{ msg }}</div>
+          }
+          @if (form.errors?.['contrasenasNoCoinciden'] && form.controls.confirmPassword.touched) {
+            <div class="error-text">Las contraseñas no coinciden.</div>
+          }
+        </div>
+
+        @if (error()) {
+          <div class="error-text">{{ error() }}</div>
+        }
+
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="loading() || form.invalid || form.pending">Crear cuenta</button>
+        <button class="btn btn-ghost" type="button" routerLink="/login">Ya tengo cuenta — iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+</div>
