@@ -24,5 +24,8 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Crear environment
+        run: cp src/environments/environment.example.ts src/environments/environment.ts
+
       - name: Compilar Angular
         run: npm run build

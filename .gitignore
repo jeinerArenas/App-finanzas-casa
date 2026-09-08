@@ -43,4 +43,5 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 CLAUDE.md
-/src/environments/
+/src/environments/*
+!/src/environments/environment.example.ts
