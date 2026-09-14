@@ -13,7 +13,9 @@ export class IngresosService {
   readonly ingresos = this._ingresos.asReadonly();
 
   cargar(): void {
-    this.helper.get<BackendIncome[]>('incomes').subscribe((ingresos) => this._ingresos.set(ingresos));
+    this.helper
+      .get<BackendIncome[]>('incomes')
+      .subscribe((ingresos) => this._ingresos.set(ingresos));
   }
 
   crear(payload: CrearIngresoPayload): Observable<BackendIncome> {
@@ -28,19 +30,10 @@ export class IngresosService {
   editar(idIncome: number, payload: EditarIngresoPayload): Observable<BackendIncome> {
     return this.helper.put<BackendIncome>(`incomes/${idIncome}`, this.aBody(payload)).pipe(
       tap((actualizado) => {
-        this._ingresos.update((lista) => lista.map((i) => (i.id_income === idIncome ? actualizado : i)));
+        this._ingresos.update((lista) =>
+          lista.map((i) => (i.id_income === idIncome ? actualizado : i)),
+        );
         this.actividad.registrar('editar', `${actualizado.concept} · ${actualizado.amount}`);
-      }),
-    );
-  }
-
-  eliminar(idIncome: number): Observable<void> {
-    const item = this._ingresos().find((i) => i.id_income === idIncome);
-
-    return this.helper.delete<void>(`incomes/${idIncome}`).pipe(
-      tap(() => {
-        this._ingresos.update((lista) => lista.filter((i) => i.id_income !== idIncome));
-        if (item) this.actividad.registrar('eliminar', `${item.concept} · ${item.amount}`);
       }),
     );
   }

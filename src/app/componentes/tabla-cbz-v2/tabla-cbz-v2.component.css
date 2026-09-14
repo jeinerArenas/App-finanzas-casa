@@ -1,0 +1,22 @@
+.tabla-cbz-sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--color-surface);
+}
+
+.tabla-cbz-left {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--color-surface);
+}
+
+.tabla-cbz-sticky thead th.tabla-cbz-left {
+  z-index: 3;
+}
+
+.tabla-cbz-pager .input {
+  width: auto;
+  padding-block: 2px;
+}

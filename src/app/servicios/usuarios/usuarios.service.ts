@@ -22,7 +22,9 @@ export class UsuariosService {
         id_role: payload.idRole,
       })
       .pipe(
-        tap((creado) => this.actividad.registrar('agregar', `${creado.full_name} (${creado.role_name})`)),
+        tap((creado) =>
+          this.actividad.registrar('agregar', `${creado.full_name} (${creado.role_name})`),
+        ),
       );
   }
 

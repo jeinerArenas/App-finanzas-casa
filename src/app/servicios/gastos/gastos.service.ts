@@ -28,7 +28,9 @@ export class GastosService {
   editar(idExpense: number, payload: EditarGastoPayload): Observable<BackendExpense> {
     return this.helper.put<BackendExpense>(`expenses/${idExpense}`, this.aBody(payload)).pipe(
       tap((actualizado) => {
-        this._gastos.update((lista) => lista.map((g) => (g.id_expense === idExpense ? actualizado : g)));
+        this._gastos.update((lista) =>
+          lista.map((g) => (g.id_expense === idExpense ? actualizado : g)),
+        );
         this.actividad.registrar('editar', `${actualizado.category_name} · ${actualizado.amount}`);
       }),
     );

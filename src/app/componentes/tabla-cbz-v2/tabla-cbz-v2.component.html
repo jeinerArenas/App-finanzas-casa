@@ -1,0 +1,113 @@
+<div class="tabla-cbz">
+  @if (showExport()) {
+    <div class="flex justify-end mb-2">
+      <button
+        class="btn btn-secondary"
+        type="button"
+        (click)="exportData()"
+        i18n="@@tablaCbz.export"
+      >
+        Exportar
+      </button>
+    </div>
+  }
+
+  <div class="overflow-x-auto">
+    <table class="table" [class.tabla-cbz-sticky]="configuration().stickyHeader">
+      <thead>
+        <tr>
+          @for (key of visibleColumns(); track key) {
+            <th
+              [class]="headerClass(key)"
+              [class.tabla-cbz-left]="isLeft(key)"
+              [style]="headerStyle(key)"
+            >
+              {{ headerLabel(key) }}
+            </th>
+          }
+          @if (hasActions()) {
+            <th class="text-right" i18n="@@tablaCbz.actionsHeader">Acciones</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of pagedData(); track rowKey(row, $index)) {
+          <tr [style]="rowStyle(row)" (click)="onRowClick(row)">
+            @for (key of visibleColumns(); track key) {
+              <td
+                [class]="alignClass(key)"
+                [class.tabla-cbz-left]="isLeft(key)"
+                [style]="cellStyle(row, key)"
+              >
+                @if (cellTemplate(key); as tpl) {
+                  <ng-container *ngTemplateOutlet="tpl; context: { $implicit: row }"></ng-container>
+                } @else if (isTag(key)) {
+                  <span class="tag" [class]="tagClass(row, key)">{{ cellText(row, key) }}</span>
+                } @else {
+                  {{ cellText(row, key) }}
+                }
+              </td>
+            }
+            @if (hasActions()) {
+              <td class="flex gap-0.5 justify-end">
+                @for (action of visibleActions(row); track action.id) {
+                  <button
+                    class="btn btn-icon btn-ghost"
+                    type="button"
+                    [disabled]="isActionDisabled(action, row)"
+                    [attr.aria-label]="action.label"
+                    (click)="onAction(action, row, $event)"
+                    [innerHTML]="iconHtml(action.icon)"
+                  ></button>
+                }
+              </td>
+            }
+          </tr>
+        } @empty {
+          <tr>
+            <td class="text-muted" [attr.colspan]="columnSpan()">{{ emptyText() }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (showPagination()) {
+    <div class="tabla-cbz-pager flex flex-wrap items-center justify-between gap-3 mt-2">
+      <label class="flex items-center gap-1.5 text-xs text-muted">
+        <span i18n="@@tablaCbz.rowsPerPage">Filas por página</span>
+        <select class="input" [value]="pageSize()" (change)="changePageSize($event)">
+          @for (option of pageSizeOptions(); track option) {
+            <option [value]="option">{{ option }}</option>
+          }
+        </select>
+      </label>
+
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-muted" i18n="@@tablaCbz.pageStatus"
+          >Página {{ pageIndex() + 1 }} de {{ totalPages() }}</span
+        >
+        <button
+          class="btn btn-icon btn-ghost"
+          type="button"
+          [disabled]="pageIndex() === 0"
+          (click)="prevPage()"
+          aria-label="Página anterior"
+          i18n-aria-label="@@tablaCbz.prevPage"
+        >
+          &lsaquo;
+        </button>
+        <button
+          class="btn btn-icon btn-ghost"
+          type="button"
+          [disabled]="pageIndex() >= totalPages() - 1"
+          (click)="nextPage()"
+          aria-label="Página siguiente"
+          i18n-aria-label="@@tablaCbz.nextPage"
+        >
+          &rsaquo;
+        </button>
+      </div>
+    </div>
+  }
+</div>

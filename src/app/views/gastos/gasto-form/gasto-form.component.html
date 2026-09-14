@@ -1,0 +1,116 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    <div class="field">
+      <label i18n="@@gastos.form.categoria">Categoría</label>
+      <select class="input" formControlName="idCategory">
+        <option [ngValue]="null" disabled i18n="@@gastos.form.categoriaPlaceholder">
+          Selecciona una categoría
+        </option>
+        @for (cat of categorias; track cat.id_category) {
+          <option [ngValue]="cat.id_category">{{ cat.category_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idCategory, 'La categoría'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    @if (!esEdicion) {
+      <div class="field">
+        <label i18n="@@gastos.form.deuda">Deuda relacionada (opcional)</label>
+        <select class="input" formControlName="idDebt">
+          <option [ngValue]="null" i18n="@@gastos.form.deudaNinguna">Ninguna (gasto normal)</option>
+          @for (d of deudasActivas; track d.id_debt) {
+            <option [ngValue]="d.id_debt">
+              {{ d.description }} · Saldo: {{ fmt(d.pending_balance) }}
+            </option>
+          }
+        </select>
+      </div>
+
+      @if (selectedDebtId()) {
+        <div class="field">
+          <label i18n="@@gastos.form.cuotas">Cuotas a pagar</label>
+          <select class="input" formControlName="installmentsCount">
+            <option [ngValue]="null" disabled i18n="@@gastos.form.cuotasPlaceholder">
+              Selecciona cuántas cuotas
+            </option>
+            @for (n of cuotasDisponibles(); track n) {
+              <option [ngValue]="n">
+                {{ n }} {{ n === 1 ? 'cuota' : 'cuotas'
+                }}{{ n === cuotasDisponibles().length ? ' (paga el saldo total)' : '' }}
+              </option>
+            }
+          </select>
+        </div>
+      }
+    } @else if (editingDebtRow()) {
+      <div class="text-muted text-xs" i18n="@@gastos.form.avisoDeuda">
+        Este gasto es un pago de la deuda "{{ editingDebtDescripcion() }}" ({{
+          editingDebtRow()!.installments_count
+        }}
+        {{ editingDebtRow()!.installments_count === 1 ? 'cuota' : 'cuotas' }}). El monto no se puede
+        modificar aquí.
+      </div>
+    }
+
+    <div class="grid grid-cols-2 gap-2">
+      <div class="field">
+        <label i18n="@@gastos.form.monto">Monto</label>
+        <input class="input" type="number" placeholder="0" formControlName="amount" />
+        @if (getErrorMessage(form.controls.amount, 'El monto'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label i18n="@@gastos.form.fecha">Fecha</label>
+        <input class="input" type="date" formControlName="expenseDate" />
+        @if (getErrorMessage(form.controls.expenseDate, 'La fecha'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.form.quien">Quién</label>
+      <select class="input" formControlName="idUser">
+        <option [ngValue]="null" disabled i18n="@@ingresos.form.quienPlaceholder">
+          Selecciona un miembro
+        </option>
+        @for (m of miembros; track m.id_user) {
+          <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idUser, 'Quién'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label i18n="@@gastos.form.nota">Nota</label>
+      <input
+        class="input"
+        placeholder="Descripción breve"
+        i18n-placeholder="@@gastos.form.notaPlaceholder"
+        formControlName="note"
+      />
+    </div>
+
+    @if (error()) {
+      <div class="error-text">{{ error() }}</div>
+    }
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@gastos.form.registrar">Registrar gasto</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
+</form>

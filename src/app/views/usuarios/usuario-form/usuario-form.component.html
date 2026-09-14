@@ -1,51 +1,57 @@
-<div class="card elev-md">
-<div class="flex justify-between items-center">
-  <span class="card-title">{{ esEdicion ? 'Editar usuario' : 'Agregar nuevo usuario' }}</span>
-  <button class="btn btn-icon btn-ghost" type="button" (click)="cancelar()" aria-label="Cerrar">✕</button>
-</div>
-<form class="flex flex-col gap-2.5" [formGroup]="form" (ngSubmit)="guardar()">
-  @if (esEdicion) {
-    <div class="text-muted text-[13px]">No puedes cambiar la familia del usuario desde aquí.</div>
-  }
-  <div class="field">
-    <label>Documento</label>
-    <input class="input" formControlName="documentNumber" soloNumeros />
-    @if (getErrorMessage(form.controls.documentNumber, 'El documento'); as msg) {
-      <div class="error-text">{{ msg }}</div>
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    @if (esEdicion) {
+      <div class="text-muted text-[13px]" i18n="@@usuarios.form.avisoFamilia">
+        No puedes cambiar la familia del usuario desde aquí.
+      </div>
     }
-  </div>
-  <div class="field">
-    <label>Nombre</label>
-    <input class="input" formControlName="fullName" soloTexto />
-    @if (getErrorMessage(form.controls.fullName, 'El nombre'); as msg) {
-      <div class="error-text">{{ msg }}</div>
-    }
-  </div>
-  <div class="field">
-    <label>Correo electrónico</label>
-    <input class="input" type="email" formControlName="email" />
-    @if (getErrorMessage(form.controls.email, 'El correo'); as msg) {
-      <div class="error-text">{{ msg }}</div>
-    }
-  </div>
-  <div class="field">
-    <label>Rol</label>
-    <select class="input" formControlName="idRole">
-      <option [ngValue]="null" disabled>Selecciona un rol</option>
-      @for (rol of roles; track rol.id_role) {
-        <option [ngValue]="rol.id_role">{{ rol.role_name }}</option>
+    <div class="field">
+      <label i18n="@@usuarios.form.documento">Documento</label>
+      <input class="input" formControlName="documentNumber" soloNumeros />
+      @if (getErrorMessage(form.controls.documentNumber, 'El documento'); as msg) {
+        <div class="error-text">{{ msg }}</div>
       }
-    </select>
-    @if (getErrorMessage(form.controls.idRole, 'El rol'); as msg) {
-      <div class="error-text">{{ msg }}</div>
-    }
-  </div>
+    </div>
+    <div class="field">
+      <label i18n="@@usuarios.form.nombre">Nombre</label>
+      <input class="input" formControlName="fullName" soloTexto />
+      @if (getErrorMessage(form.controls.fullName, 'El nombre'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+    <div class="field">
+      <label i18n="@@usuarios.form.correo">Correo electrónico</label>
+      <input class="input" type="email" formControlName="email" />
+      @if (getErrorMessage(form.controls.email, 'El correo'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+    <div class="field">
+      <label i18n="@@usuarios.form.rol">Rol</label>
+      <select class="input" formControlName="idRole">
+        <option [ngValue]="null" disabled i18n="@@usuarios.form.rolPlaceholder">
+          Selecciona un rol
+        </option>
+        @for (rol of roles; track rol.id_role) {
+          <option [ngValue]="rol.id_role">{{ rol.role_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idRole, 'El rol'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
 
-  <div class="flex gap-2 justify-end mt-1.5">
-    <button class="btn btn-ghost" type="button" (click)="cancelar()">Cancelar</button>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
-      {{ esEdicion ? 'Guardar cambios' : 'Crear usuario' }}
-    </button>
-  </div>
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@usuarios.form.crear">Crear usuario</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
 </form>
-</div>

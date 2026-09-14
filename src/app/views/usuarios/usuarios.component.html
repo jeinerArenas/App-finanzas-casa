@@ -1,7 +1,9 @@
 <div class="card elev-sm">
   <div class="flex justify-between items-center">
-    <div class="card-title">Usuarios</div>
-    <button class="btn btn-primary" type="button" (click)="abrirCrear()">Agregar usuario</button>
+    <div class="card-title" i18n="@@usuarios.titulo">Usuarios</div>
+    <button class="btn btn-primary" type="button" (click)="abrirCrear()" i18n="@@usuarios.agregar">
+      Agregar usuario
+    </button>
   </div>
 
   @if (error()) {
@@ -9,13 +11,8 @@
   }
 
   @if (cargando()) {
-    <div class="text-muted mt-2">Cargando usuarios…</div>
+    <div class="text-muted mt-2" i18n="@@usuarios.cargando">Cargando usuarios…</div>
   } @else {
-    <app-data-table
-      [columns]="columns"
-      [data]="usuarios()"
-      [actions]="actions"
-      emptyMessage="No hay usuarios registrados en tu familia."
-    />
+    <app-tabla-cbz-v2 [configuration]="tabla()" (events)="onTableEvent($event)" />
   }
 </div>

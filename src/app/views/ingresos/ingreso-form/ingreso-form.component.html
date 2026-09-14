@@ -1,0 +1,66 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    <div class="text-muted text-[13px]" i18n="@@ingresos.ingreso.ayuda">
+      Para un ingreso puntual de este mes (no recurrente) — para el sueldo fijo usa "Registrar
+      salario".
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.ingreso.concepto">Concepto</label>
+      <input
+        class="input"
+        placeholder="Venta, regalo, reembolso..."
+        i18n-placeholder="@@ingresos.ingreso.conceptoPlaceholder"
+        formControlName="concept"
+      />
+      @if (getErrorMessage(form.controls.concept, 'El concepto'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <div class="field">
+        <label i18n="@@gastos.form.monto">Monto</label>
+        <input class="input" type="number" placeholder="0" formControlName="amount" />
+        @if (getErrorMessage(form.controls.amount, 'El monto'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label i18n="@@gastos.form.fecha">Fecha</label>
+        <input class="input" type="date" formControlName="incomeDate" />
+        @if (getErrorMessage(form.controls.incomeDate, 'La fecha'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.form.quien">Quién</label>
+      <select class="input" formControlName="idUser">
+        <option [ngValue]="null" disabled i18n="@@ingresos.form.quienPlaceholder">
+          Selecciona un miembro
+        </option>
+        @for (m of miembros; track m.id_user) {
+          <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idUser, 'Quién'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@ingresos.ingreso.agregar">Agregar ingreso</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
+</form>

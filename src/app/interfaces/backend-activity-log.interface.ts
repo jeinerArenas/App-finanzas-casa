@@ -9,6 +9,14 @@ export interface BackendActivityLog {
   created_at: string;
 }
 
+export interface ActividadRow {
+  id_activity_log: number;
+  user_name: string;
+  action: LogAction;
+  detail: string;
+  dateFmt: string;
+}
+
 export const LOG_ACTION_LABELS: Record<LogAction, string> = {
   agregar: 'Agregó',
   editar: 'Editó',

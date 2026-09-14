@@ -1,0 +1,1376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="es" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="comun.cerrar" datatype="html">
+        <source>Cerrar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/modal/modal-shell.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.resumen" datatype="html">
+        <source>Resumen</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">22,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.movimientos" datatype="html">
+        <source>Movimientos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.ingresos" datatype="html">
+        <source>Ingresos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.gastos" datatype="html">
+        <source>Gastos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">70,72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.deudas" datatype="html">
+        <source>Deudas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">83,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.categorias" datatype="html">
+        <source>Categorías</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">93,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.usuarios" datatype="html">
+        <source>Usuarios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">104,107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidebar.actividad" datatype="html">
+        <source>Actividad</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/sidebar/sidebar.component.html</context>
+          <context context-type="linenumber">130,134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.export" datatype="html">
+        <source> Exportar </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.actionsHeader" datatype="html">
+        <source>Acciones</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">29,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.rowsPerPage" datatype="html">
+        <source>Filas por página</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.pageStatus" datatype="html">
+        <source>Página <x id="INTERPOLATION" equiv-text="{{ pageIndex() + 1 }}"/> de <x id="INTERPOLATION_1" equiv-text="{{ totalPages() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">88,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.prevPage" datatype="html">
+        <source>Página anterior</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.nextPage" datatype="html">
+        <source>Página siguiente</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.html</context>
+          <context context-type="linenumber">105,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tablaCbz.empty" datatype="html">
+        <source>No hay datos para mostrar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/tabla-cbz-v2/tabla-cbz-v2.component.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="topbar.temaClaro" datatype="html">
+        <source>Cambiar a modo claro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/topbar/topbar.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="topbar.temaOscuro" datatype="html">
+        <source>Cambiar a modo oscuro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/componentes/topbar/topbar.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.titulo" datatype="html">
+        <source>Registro de actividad</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.ayuda" datatype="html">
+        <source> Quién agregó, editó o eliminó movimientos. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.col.fecha" datatype="html">
+        <source>Fecha</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.col.usuario" datatype="html">
+        <source>Usuario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.col.accion" datatype="html">
+        <source>Acción</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.col.detalle" datatype="html">
+        <source>Detalle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.export.archivo" datatype="html">
+        <source>actividad</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="actividad.vacio" datatype="html">
+        <source>Todavía no hay actividad registrada.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/actividad/actividad.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.nombre" datatype="html">
+        <source>Nombre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.nombrePlaceholder" datatype="html">
+        <source>Comida, transporte, entretenimiento...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.tipo" datatype="html">
+        <source>Tipo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.tipoPlaceholder" datatype="html">
+        <source> Selecciona un tipo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.presupuesto" datatype="html">
+        <source>Presupuesto mensual (opcional)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.sinLimite" datatype="html">
+        <source>Sin límite</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">36,37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="comun.cancelar" datatype="html">
+        <source> Cancelar </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">79,81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">105,107</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">55,57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">46,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="comun.guardarCambios" datatype="html">
+        <source>Guardar cambios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">51,53</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">83,85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">109,111</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">59,61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">62,64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.crear" datatype="html">
+        <source>Crear categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.html</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.tituloEditar" datatype="html">
+        <source>Editar categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.form.tituloCrear" datatype="html">
+        <source>Nueva categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categoria-form/categoria-form.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.titulo" datatype="html">
+        <source>Categorías y presupuestos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.ayuda" datatype="html">
+        <source> Presupuesto mensual y gasto real de <x id="INTERPOLATION" equiv-text="{{ month.monthLabel() }}"/> por categoría. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.agregar" datatype="html">
+        <source> Agregar categoría </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.html</context>
+          <context context-type="linenumber">15,19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.excedido" datatype="html">
+        <source>Excedido</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.html</context>
+          <context context-type="linenumber">29,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.col.categoria" datatype="html">
+        <source>Categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.col.tipo" datatype="html">
+        <source>Tipo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.col.presupuesto" datatype="html">
+        <source>Presupuesto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.col.gastado" datatype="html">
+        <source>Gastado</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="comun.editar" datatype="html">
+        <source>Editar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">164</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">184</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categorias.vacio" datatype="html">
+        <source>No hay categorías registradas.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/categorias/categorias.component.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.historialTitulo" datatype="html">
+        <source>Historial de meses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">213,214</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.col.mes" datatype="html">
+        <source>Mes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.col.ingresos" datatype="html">
+        <source>Ingresos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.col.gastos" datatype="html">
+        <source>Gastos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.col.ahorro" datatype="html">
+        <source>Ahorro</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard.historial.vacio" datatype="html">
+        <source>Todavía no hay meses registrados.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/dashboard/dashboard.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.avisoPagos" datatype="html">
+        <source> Ya registraste pagos para esta deuda: el monto, las cuotas y el valor de la cuota no se pueden modificar. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">5,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.descripcion" datatype="html">
+        <source>Descripción</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.descripcionPlaceholder" datatype="html">
+        <source>Tarjeta de crédito, préstamo, compra a cuotas...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.tipo" datatype="html">
+        <source>Tipo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.tipoPlaceholder" datatype="html">
+        <source> Selecciona un tipo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.montoTotal" datatype="html">
+        <source>Monto total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.cuotas" datatype="html">
+        <source>Número de cuotas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.valorCuota" datatype="html">
+        <source>Valor de la cuota</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.valorCuotaAyuda" datatype="html">
+        <source> Se calcula automáticamente: monto total ÷ número de cuotas. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">59,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.fechaInicio" datatype="html">
+        <source>Fecha de inicio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.fechaFin" datatype="html">
+        <source>Fecha estimada de fin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">72,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.registrar" datatype="html">
+        <source>Registrar deuda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.html</context>
+          <context context-type="linenumber">85,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.tituloEditar" datatype="html">
+        <source>Editar deuda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.form.tituloCrear" datatype="html">
+        <source>Registrar deuda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deuda-form/deuda-form.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.titulo" datatype="html">
+        <source>Deudas y pagos de cuotas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.descripcion" datatype="html">
+        <source> Registra tarjetas de crédito, préstamos o compras a cuotas. Cuando registres un gasto en Movimientos podrás asociarlo a una deuda y abonar una, varias o todas las cuotas restantes. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.html</context>
+          <context context-type="linenumber">6,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.registrar" datatype="html">
+        <source> Registrar deuda </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.html</context>
+          <context context-type="linenumber">11,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.descripcion" datatype="html">
+        <source>Descripción</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.tipo" datatype="html">
+        <source>Tipo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.montoTotal" datatype="html">
+        <source>Monto total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.cuotas" datatype="html">
+        <source>Cuotas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.valorCuota" datatype="html">
+        <source>Valor cuota</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.fechaInicio" datatype="html">
+        <source>Fecha inicio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.fechaFin" datatype="html">
+        <source>Fecha fin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.pagado" datatype="html">
+        <source>Pagado a la fecha</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.saldo" datatype="html">
+        <source>Saldo pendiente</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.porcentaje" datatype="html">
+        <source>% pagado</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.cuotasPagadas" datatype="html">
+        <source>Cuotas pagadas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.col.estado" datatype="html">
+        <source>Estado</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.export.archivo" datatype="html">
+        <source>deudas</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="comun.eliminar" datatype="html">
+        <source>Eliminar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.vacio" datatype="html">
+        <source>Aún no hay deudas registradas.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.estado.pagada" datatype="html">
+        <source>Pagada</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.estado.vencida" datatype="html">
+        <source>Vencida</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="deudas.estado.enCurso" datatype="html">
+        <source>En curso</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/deudas/deudas.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.categoria" datatype="html">
+        <source>Categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.categoriaPlaceholder" datatype="html">
+        <source> Selecciona una categoría </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.deuda" datatype="html">
+        <source>Deuda relacionada (opcional)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.deudaNinguna" datatype="html">
+        <source>Ninguna (gasto normal)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.cuotas" datatype="html">
+        <source>Cuotas a pagar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.cuotasPlaceholder" datatype="html">
+        <source> Selecciona cuántas cuotas </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.avisoDeuda" datatype="html">
+        <source> Este gasto es un pago de la deuda &quot;<x id="INTERPOLATION" equiv-text="{{ editingDebtDescripcion() }}"/>&quot; (<x id="INTERPOLATION_1" equiv-text="{{
+          editingDebtRow()!.installments_count
+        }}"/> <x id="INTERPOLATION_2" equiv-text="{{ editingDebtRow()!.installments_count === 1 ? &apos;cuota&apos; : &apos;cuotas&apos; }}"/>). El monto no se puede modificar aquí. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">49,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.monto" datatype="html">
+        <source>Monto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.fecha" datatype="html">
+        <source>Fecha</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.form.quien" datatype="html">
+        <source>Quién</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">75,76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.form.quienPlaceholder" datatype="html">
+        <source> Selecciona un miembro </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">78,80</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.nota" datatype="html">
+        <source>Nota</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">90,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.notaPlaceholder" datatype="html">
+        <source>Descripción breve</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">93,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.registrar" datatype="html">
+        <source>Registrar gasto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.html</context>
+          <context context-type="linenumber">111,113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.tituloEditar" datatype="html">
+        <source>Editar gasto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.tituloCrear" datatype="html">
+        <source>Registrar gasto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.form.errorCuotas" datatype="html">
+        <source>Selecciona cuántas cuotas quieres pagar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gasto-form/gasto-form.component.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.titulo" datatype="html">
+        <source>Gastos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.ayuda" datatype="html">
+        <source> Gastos de <x id="INTERPOLATION" equiv-text="{{ month.monthLabel() }}"/>. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="gastos.registrar" datatype="html">
+        <source> Registrar gasto </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.html</context>
+          <context context-type="linenumber">10,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.pagoDeuda" datatype="html">
+        <source>Pago de deuda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.cuotas" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ row.installments_count }}"/> cuota(s)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.col.fecha" datatype="html">
+        <source>Fecha</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.col.categoria" datatype="html">
+        <source>Categoría</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.col.nota" datatype="html">
+        <source>Nota</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.col.quien" datatype="html">
+        <source>Quién</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.col.monto" datatype="html">
+        <source>Monto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="movimientos.gastos.vacio" datatype="html">
+        <source>Aún no hay gastos registrados este mes.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/gastos/gastos.component.ts</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.nombre" datatype="html">
+        <source>Nombre del activo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">19,21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">177</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.nombrePlaceholder" datatype="html">
+        <source>Carro, apartamento, CDT...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.valor" datatype="html">
+        <source>Valor actual</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">178</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.registrar" datatype="html">
+        <source>Registrar activo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.tituloEditar" datatype="html">
+        <source>Editar activo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.tituloCrear" datatype="html">
+        <source>Registrar activo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/activo-form/activo-form.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.ayuda" datatype="html">
+        <source> Para un ingreso puntual de este mes (no recurrente) — para el sueldo fijo usa &quot;Registrar salario&quot;. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">4,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.concepto" datatype="html">
+        <source>Concepto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.conceptoPlaceholder" datatype="html">
+        <source>Venta, regalo, reembolso...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.agregar" datatype="html">
+        <source>Agregar ingreso</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.tituloEditar" datatype="html">
+        <source>Editar ingreso</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.tituloCrear" datatype="html">
+        <source>Nuevo ingreso del mes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingreso-form/ingreso-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tab.salario" datatype="html">
+        <source> Salario e ingresos </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tab.activos" datatype="html">
+        <source> Activos </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">20,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.titulo" datatype="html">
+        <source>Salario e ingresos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ayuda" datatype="html">
+        <source> El salario vigente se aplica automáticamente cada mes; al registrar uno nuevo para la misma persona, el anterior se cierra solo. Usa &quot;Agregar nuevo ingreso&quot; para algo puntual del mes que no sea el sueldo fijo. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">35,37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.registrarBoton" datatype="html">
+        <source> Agregar nuevo salario </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">46,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.vigenteDesde" datatype="html">
+        <source> Desde <x id="INTERPOLATION" equiv-text="{{ v.salario.start_date }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">63,64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.editarActivo" datatype="html">
+        <source> Editar salario activo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">71,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salariosVigentes.vacio" datatype="html">
+        <source> Todavía no hay ningún salario vigente registrado. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">76,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tabla.titulo" datatype="html">
+        <source>Salarios e ingresos del mes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">84,86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.ingreso.agregarBoton" datatype="html">
+        <source> Agregar nuevo ingreso </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">91,94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activos.titulo" datatype="html">
+        <source>Activos</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">101,103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activo.registrarBoton" datatype="html">
+        <source> Registrar activo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.html</context>
+          <context context-type="linenumber">108,111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tabla.salario" datatype="html">
+        <source>Salario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tabla.variable" datatype="html">
+        <source>variable</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tipo.salario" datatype="html">
+        <source>Salario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tabla.desde" datatype="html">
+        <source>Desde</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tipo.ingreso" datatype="html">
+        <source>Ingreso</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.col.tipo" datatype="html">
+        <source>Tipo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.col.quien" datatype="html">
+        <source>Quién</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">151</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">176</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.col.detalle" datatype="html">
+        <source>Detalle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">152</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.col.monto" datatype="html">
+        <source>Monto</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.col.fecha" datatype="html">
+        <source>Fecha</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.tabla.vacio" datatype="html">
+        <source>Aún no hay salarios ni ingresos registrados.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">168</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.activos.vacio" datatype="html">
+        <source>Aún no hay activos registrados.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/ingresos.component.ts</context>
+          <context context-type="linenumber">187</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.ayuda" datatype="html">
+        <source> El salario se aplica automáticamente cada mes desde la fecha de inicio hasta que registres uno nuevo — al crear otro salario para la misma persona, este se cierra solo. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">4,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.monto" datatype="html">
+        <source>Monto mensual</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.form.fechaInicio" datatype="html">
+        <source>Fecha de inicio</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.variable.tituloCampo" datatype="html">
+        <source>Variable (bono, comisión...) — opcional</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.variable.descripcionPlaceholder" datatype="html">
+        <source>Descripción</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.registrar" datatype="html">
+        <source>Registrar salario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.html</context>
+          <context context-type="linenumber">64,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.tituloEditar" datatype="html">
+        <source>Editar salario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ingresos.salario.tituloCrear" datatype="html">
+        <source>Registrar salario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/ingresos/salario-form/salario-form.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.avisoFamilia" datatype="html">
+        <source> No puedes cambiar la familia del usuario desde aquí. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">5,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.documento" datatype="html">
+        <source>Documento</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.nombre" datatype="html">
+        <source>Nombre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.correo" datatype="html">
+        <source>Correo electrónico</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.rol" datatype="html">
+        <source>Rol</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.rolPlaceholder" datatype="html">
+        <source> Selecciona un rol </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.crear" datatype="html">
+        <source>Crear usuario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.html</context>
+          <context context-type="linenumber">52,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.tituloEditar" datatype="html">
+        <source>Editar usuario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.form.tituloCrear" datatype="html">
+        <source>Agregar nuevo usuario</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuario-form/usuario-form.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.titulo" datatype="html">
+        <source>Usuarios</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.agregar" datatype="html">
+        <source> Agregar usuario </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.html</context>
+          <context context-type="linenumber">5,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.cargando" datatype="html">
+        <source>Cargando usuarios…</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.col.documento" datatype="html">
+        <source>Documento</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.col.nombre" datatype="html">
+        <source>Nombre</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.col.rol" datatype="html">
+        <source>Rol</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.col.correo" datatype="html">
+        <source>Correo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="usuarios.vacio" datatype="html">
+        <source>No hay usuarios registrados en tu familia.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/views/usuarios/usuarios.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

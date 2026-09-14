@@ -1,8 +1,33 @@
 @if (hasAlerts()) {
   <div class="flex flex-col gap-2 mb-[0.6rem]">
     @if (overBudgetCategories().length) {
-      <div class="card elev-sm flex-row! items-center gap-2.5! border border-[color:var(--color-divider)]">
-        <svg width="20" height="20" viewBox="0 0 256 256" fill="none" class="flex-none text-[color:var(--color-accent-300)]"><path d="M128 40 24 216h208Z" stroke="currentColor" stroke-width="16" stroke-linejoin="round"></path><line x1="128" y1="96" x2="128" y2="144" stroke="currentColor" stroke-width="16" stroke-linecap="round"></line><circle cx="128" cy="172" r="8" fill="currentColor"></circle></svg>
+      <div
+        class="card elev-sm flex-row! items-center gap-2.5! border border-[color:var(--color-divider)]"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 256 256"
+          fill="none"
+          class="flex-none text-[color:var(--color-accent-300)]"
+        >
+          <path
+            d="M128 40 24 216h208Z"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linejoin="round"
+          ></path>
+          <line
+            x1="128"
+            y1="96"
+            x2="128"
+            y2="144"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <circle cx="128" cy="172" r="8" fill="currentColor"></circle>
+        </svg>
         <div class="text-[13px]">
           Presupuesto excedido en:
           @for (c of overBudgetCategories(); track c.name) {
@@ -12,9 +37,28 @@
       </div>
     }
     @if (goalAchieved()) {
-      <div class="card elev-sm flex-row! items-center gap-2.5! border border-[color:var(--color-accent)]">
-        <svg width="20" height="20" viewBox="0 0 256 256" fill="none" class="flex-none text-[color:var(--color-accent)]"><circle cx="128" cy="128" r="96" stroke="currentColor" stroke-width="16"></circle><path d="M88 132l28 28 56-64" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        <div class="text-[13px]">¡Meta de ahorro cumplida! Llevan {{ summary().cumTotalFmt }} ahorrados.</div>
+      <div
+        class="card elev-sm flex-row! items-center gap-2.5! border border-[color:var(--color-accent)]"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 256 256"
+          fill="none"
+          class="flex-none text-[color:var(--color-accent)]"
+        >
+          <circle cx="128" cy="128" r="96" stroke="currentColor" stroke-width="16"></circle>
+          <path
+            d="M88 132l28 28 56-64"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+        <div class="text-[13px]">
+          ¡Meta de ahorro cumplida! Llevan {{ summary().cumTotalFmt }} ahorrados.
+        </div>
       </div>
     }
   </div>
@@ -44,7 +88,9 @@
       <div class="h-1.5 rounded-[3px] bg-[var(--color-neutral-800)] overflow-hidden my-1.5">
         <div class="h-full bg-[var(--color-accent)]" [style.width.%]="goalPct()"></div>
       </div>
-      <div class="text-muted text-xs">{{ goalPct() | number: '1.0-0' }}% de {{ goalAmountFmt() }}</div>
+      <div class="text-muted text-xs">
+        {{ goalPct() | number: '1.0-0' }}% de {{ goalAmountFmt() }}
+      </div>
       <button class="btn btn-ghost pl-0! mt-1 text-xs" (click)="clearGoal()">Editar meta</button>
     } @else {
       <form class="flex flex-col gap-1.5 mt-1" [formGroup]="goalForm" (ngSubmit)="saveGoal()">
@@ -56,7 +102,9 @@
         @if (getErrorMessage(goalForm.controls.amount, 'El monto'); as msg) {
           <div class="error-text">{{ msg }}</div>
         }
-        <button class="btn btn-primary btn-block" type="submit" [disabled]="goalForm.invalid">Guardar meta</button>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="goalForm.invalid">
+          Guardar meta
+        </button>
       </form>
     }
   </div>
@@ -67,18 +115,60 @@
     <div class="card-title mb-1">Ingresos vs gastos vs ahorro</div>
     <div class="text-muted text-xs mb-1.5">Últimos {{ summary().bars.length }} meses</div>
     <svg viewBox="0 0 640 210" width="100%" class="overflow-visible">
-      <line x1="44" [attr.y1]="186" x2="616" [attr.y2]="186" stroke="var(--color-divider)" stroke-width="1"></line>
+      <line
+        x1="44"
+        [attr.y1]="186"
+        x2="616"
+        [attr.y2]="186"
+        stroke="var(--color-divider)"
+        stroke-width="1"
+      ></line>
       @for (b of summary().bars; track b.label) {
-        <rect [attr.x]="b.incX" [attr.y]="b.incY" [attr.width]="b.barW" [attr.height]="b.incH" fill="var(--color-neutral-400)" rx="2"></rect>
-        <rect [attr.x]="b.expX" [attr.y]="b.expY" [attr.width]="b.barW" [attr.height]="b.expH" fill="var(--color-neutral-700)" rx="2"></rect>
-        <rect [attr.x]="b.savX" [attr.y]="b.savY" [attr.width]="b.barW" [attr.height]="b.savH" fill="var(--color-accent)" rx="2"></rect>
-        <text [attr.x]="b.labelX" y="203" text-anchor="middle" fill="var(--color-neutral-500)" font-size="10">{{ b.label }}</text>
+        <rect
+          [attr.x]="b.incX"
+          [attr.y]="b.incY"
+          [attr.width]="b.barW"
+          [attr.height]="b.incH"
+          fill="var(--color-neutral-400)"
+          rx="2"
+        ></rect>
+        <rect
+          [attr.x]="b.expX"
+          [attr.y]="b.expY"
+          [attr.width]="b.barW"
+          [attr.height]="b.expH"
+          fill="var(--color-neutral-700)"
+          rx="2"
+        ></rect>
+        <rect
+          [attr.x]="b.savX"
+          [attr.y]="b.savY"
+          [attr.width]="b.barW"
+          [attr.height]="b.savH"
+          fill="var(--color-accent)"
+          rx="2"
+        ></rect>
+        <text
+          [attr.x]="b.labelX"
+          y="203"
+          text-anchor="middle"
+          fill="var(--color-neutral-500)"
+          font-size="10"
+        >
+          {{ b.label }}
+        </text>
       }
     </svg>
     <div class="flex gap-4 mt-2">
-      <div class="flex items-center gap-1.5 text-[11px]"><span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-neutral-400)]"></span>Ingresos</div>
-      <div class="flex items-center gap-1.5 text-[11px]"><span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-neutral-700)]"></span>Gastos</div>
-      <div class="flex items-center gap-1.5 text-[11px]"><span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-accent)]"></span>Ahorro</div>
+      <div class="flex items-center gap-1.5 text-[11px]">
+        <span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-neutral-400)]"></span>Ingresos
+      </div>
+      <div class="flex items-center gap-1.5 text-[11px]">
+        <span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-neutral-700)]"></span>Gastos
+      </div>
+      <div class="flex items-center gap-1.5 text-[11px]">
+        <span class="w-[9px] h-[9px] rounded-[2px] bg-[var(--color-accent)]"></span>Ahorro
+      </div>
     </div>
   </div>
 
@@ -86,24 +176,40 @@
     <div class="card-title mb-1">Ahorro acumulado</div>
     <div class="text-muted text-xs mb-1.5">Evolución en el tiempo</div>
     <svg viewBox="0 0 640 210" width="100%" class="overflow-visible">
-      <line x1="44" [attr.y1]="summary().midY" x2="616" [attr.y2]="summary().midY" stroke="var(--color-divider)" stroke-width="1"></line>
+      <line
+        x1="44"
+        [attr.y1]="summary().midY"
+        x2="616"
+        [attr.y2]="summary().midY"
+        stroke="var(--color-divider)"
+        stroke-width="1"
+      ></line>
       <polygon [attr.points]="summary().areaPointsStr" fill="var(--color-accent-900)"></polygon>
-      <polyline [attr.points]="summary().linePointsStr" fill="none" stroke="var(--color-accent)" stroke-width="2.5"></polyline>
+      <polyline
+        [attr.points]="summary().linePointsStr"
+        fill="none"
+        stroke="var(--color-accent)"
+        stroke-width="2.5"
+      ></polyline>
       @for (p of summary().linePoints; track $index) {
         <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3.5" fill="var(--color-accent-400)"></circle>
       }
       @for (l of summary().lineLabels; track $index) {
-        <text [attr.x]="l.x" y="203" text-anchor="middle" fill="var(--color-neutral-500)" font-size="10">{{ l.label }}</text>
+        <text
+          [attr.x]="l.x"
+          y="203"
+          text-anchor="middle"
+          fill="var(--color-neutral-500)"
+          font-size="10"
+        >
+          {{ l.label }}
+        </text>
       }
     </svg>
   </div>
 </div>
 
 <div class="card elev-sm">
-  <div class="card-title">Historial de meses</div>
-  <app-data-table
-    [columns]="historyColumns"
-    [data]="summary().historyRows"
-    emptyMessage="Todavía no hay meses registrados."
-  />
+  <div class="card-title" i18n="@@dashboard.historialTitulo">Historial de meses</div>
+  <app-tabla-cbz-v2 [configuration]="historyTable()" />
 </div>

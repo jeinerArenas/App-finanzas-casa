@@ -1,0 +1,116 @@
+<div class="flex flex-col gap-3.5">
+  <div class="card elev-sm p-0! overflow-hidden">
+    <div class="tabs px-3">
+      <button
+        class="tab"
+        [class.tab-active]="tab() === 'salario'"
+        type="button"
+        (click)="setTab('salario')"
+        i18n="@@ingresos.tab.salario"
+      >
+        Salario e ingresos
+      </button>
+      <button
+        class="tab"
+        [class.tab-active]="tab() === 'activos'"
+        type="button"
+        (click)="setTab('activos')"
+        i18n="@@ingresos.tab.activos"
+      >
+        Activos
+      </button>
+    </div>
+  </div>
+
+  @if (error()) {
+    <div class="error-text">{{ error() }}</div>
+  }
+
+  @if (tab() === 'salario') {
+    <div class="card elev-sm">
+      <div class="flex justify-between items-start gap-3 flex-wrap">
+        <div>
+          <div class="card-title" i18n="@@ingresos.titulo">Salario e ingresos</div>
+          <div class="text-muted text-xs max-w-[520px]" i18n="@@ingresos.ayuda">
+            El salario vigente se aplica automáticamente cada mes; al registrar uno nuevo para la
+            misma persona, el anterior se cierra solo. Usa "Agregar nuevo ingreso" para algo puntual
+            del mes que no sea el sueldo fijo.
+          </div>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="abrirCrearSalario()"
+          i18n="@@ingresos.salario.registrarBoton"
+        >
+          Agregar nuevo salario
+        </button>
+      </div>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-3 mt-3">
+        @for (v of salariosVigentes(); track v.salario.id_salary) {
+          <div class="card elev-md">
+            <div class="text-muted text-xs">{{ v.salario.user_full_name }}</div>
+            <div class="text-[22px] font-semibold mt-1">{{ fmt(v.total) }}</div>
+            @if (v.variable) {
+              <div class="text-muted text-xs mt-1">
+                {{ fmt(v.salario.amount) }} + {{ v.variable.description || 'variable' }} ({{
+                  fmt(v.variable.amount)
+                }})
+              </div>
+            }
+            <div class="text-muted text-xs mt-1" i18n="@@ingresos.vigenteDesde">
+              Desde {{ v.salario.start_date }}
+            </div>
+            <button
+              class="btn btn-secondary btn-block mt-2"
+              type="button"
+              (click)="editarSalarioVigente(v)"
+              i18n="@@ingresos.salario.editarActivo"
+            >
+              Editar salario activo
+            </button>
+          </div>
+        } @empty {
+          <div class="text-muted text-sm" i18n="@@ingresos.salariosVigentes.vacio">
+            Todavía no hay ningún salario vigente registrado.
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="card elev-sm">
+      <div class="flex justify-between items-center gap-3 flex-wrap">
+        <div class="card-title" i18n="@@ingresos.tabla.titulo">Salarios e ingresos del mes</div>
+        <button
+          class="btn btn-secondary"
+          type="button"
+          (click)="abrirCrearIngreso()"
+          i18n="@@ingresos.ingreso.agregarBoton"
+        >
+          Agregar nuevo ingreso
+        </button>
+      </div>
+      <div class="mt-2.5">
+        <app-tabla-cbz-v2 [configuration]="tablaIngresos()" (events)="onFilaEvent($event)" />
+      </div>
+    </div>
+  } @else {
+    <div class="card elev-sm">
+      <div class="flex justify-between items-start gap-3 flex-wrap">
+        <div class="card-title" i18n="@@ingresos.activos.titulo">Activos</div>
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="abrirCrearActivo()"
+          i18n="@@ingresos.activo.registrarBoton"
+        >
+          Registrar activo
+        </button>
+      </div>
+      <div class="mt-2.5">
+        <app-tabla-cbz-v2 [configuration]="tablaActivos()" (events)="onActivoEvent($event)" />
+      </div>
+    </div>
+  }
+</div>

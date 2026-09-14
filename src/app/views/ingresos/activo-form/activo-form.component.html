@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    <div class="field">
+      <label i18n="@@ingresos.form.quien">Quién</label>
+      <select class="input" formControlName="idUser">
+        <option [ngValue]="null" disabled i18n="@@ingresos.form.quienPlaceholder">
+          Selecciona un miembro
+        </option>
+        @for (m of miembros; track m.id_user) {
+          <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idUser, 'Quién'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.activo.nombre">Nombre del activo</label>
+      <input
+        class="input"
+        placeholder="Carro, apartamento, CDT..."
+        i18n-placeholder="@@ingresos.activo.nombrePlaceholder"
+        formControlName="name"
+      />
+      @if (getErrorMessage(form.controls.name, 'El nombre'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.activo.valor">Valor actual</label>
+      <input class="input" type="number" placeholder="0" formControlName="value" />
+      @if (getErrorMessage(form.controls.value, 'El valor'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@ingresos.activo.registrar">Registrar activo</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
+</form>

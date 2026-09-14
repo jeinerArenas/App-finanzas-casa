@@ -1,0 +1,21 @@
+<div class="card elev-md modal-shell">
+  <div class="modal-shell-header">
+    <div class="modal-shell-icon" [innerHTML]="iconHtml()"></div>
+    <span class="card-title modal-shell-title">{{ title() }}</span>
+    <button
+      class="btn btn-icon btn-ghost"
+      type="button"
+      (click)="close.emit()"
+      aria-label="Cerrar"
+      i18n-aria-label="@@comun.cerrar"
+    >
+      ✕
+    </button>
+  </div>
+  <div class="modal-shell-body">
+    <ng-content></ng-content>
+  </div>
+  <div class="modal-shell-footer">
+    <ng-content select="[modalFooter]"></ng-content>
+  </div>
+</div>

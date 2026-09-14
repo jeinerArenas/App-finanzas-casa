@@ -1,0 +1,34 @@
+<div class="card elev-sm">
+  <div class="flex justify-between items-start gap-3 flex-wrap">
+    <div>
+      <div class="card-title" i18n="@@gastos.titulo">Gastos</div>
+      <div class="text-muted text-xs" i18n="@@gastos.ayuda">
+        Gastos de {{ month.monthLabel() }}.
+      </div>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="abrirCrear()" i18n="@@gastos.registrar">
+      Registrar gasto
+    </button>
+  </div>
+
+  @if (error()) {
+    <div class="error-text mt-2">{{ error() }}</div>
+  }
+
+  <div class="mt-2.5">
+    <app-tabla-cbz-v2 [configuration]="tabla()" (events)="onTableEvent($event)" />
+  </div>
+
+  <ng-template #categoriaCell let-row>
+    <span class="tag tag-outline">{{ row.category_name }}</span>
+    @if (row.id_debt !== null) {
+      <span
+        class="tag tag-accent"
+        title="Pago de deuda"
+        i18n-title="@@movimientos.pagoDeuda"
+        i18n="@@movimientos.cuotas"
+        >{{ row.installments_count }} cuota(s)</span
+      >
+    }
+  </ng-template>
+</div>

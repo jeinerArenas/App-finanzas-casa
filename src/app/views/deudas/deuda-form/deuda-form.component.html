@@ -1,78 +1,90 @@
-<div class="card elev-md">
-<div class="flex justify-between items-center">
-  <span class="card-title">{{ esEdicion ? 'Editar deuda' : 'Registrar deuda' }}</span>
-  <button class="btn btn-icon btn-ghost" type="button" (click)="cancelar()" aria-label="Cerrar">✕</button>
-</div>
-<form class="flex flex-col gap-2.5" [formGroup]="form" (ngSubmit)="guardar()">
-  @if (esEdicion && form.controls.totalAmount.disabled) {
-    <div class="text-muted text-[13px]">
-      Ya registraste pagos para esta deuda: el monto, las cuotas y el valor de la cuota no se pueden modificar.
-    </div>
-  }
-
-  <div class="field">
-    <label>Descripción</label>
-    <input class="input" placeholder="Tarjeta de crédito, préstamo, compra a cuotas..." formControlName="description" />
-    @if (getErrorMessage(form.controls.description, 'La descripción'); as msg) {
-      <div class="error-text">{{ msg }}</div>
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    @if (esEdicion && form.controls.totalAmount.disabled) {
+      <div class="text-muted text-[13px]" i18n="@@deudas.form.avisoPagos">
+        Ya registraste pagos para esta deuda: el monto, las cuotas y el valor de la cuota no se
+        pueden modificar.
+      </div>
     }
-  </div>
 
-  <div class="field">
-    <label>Tipo</label>
-    <select class="input" formControlName="idCategoryType">
-      <option [ngValue]="null" disabled>Selecciona un tipo</option>
-      @for (tipo of categoryTypes; track tipo.id) {
-        <option [ngValue]="tipo.id">{{ tipo.name }}</option>
-      }
-    </select>
-    @if (getErrorMessage(form.controls.idCategoryType, 'El tipo'); as msg) {
-      <div class="error-text">{{ msg }}</div>
-    }
-  </div>
-
-  <div class="grid grid-cols-2 gap-2">
     <div class="field">
-      <label>Monto total</label>
-      <input class="input" type="number" placeholder="0" formControlName="totalAmount" />
-      @if (getErrorMessage(form.controls.totalAmount, 'El monto total'); as msg) {
+      <label i18n="@@deudas.form.descripcion">Descripción</label>
+      <input
+        class="input"
+        placeholder="Tarjeta de crédito, préstamo, compra a cuotas..."
+        i18n-placeholder="@@deudas.form.descripcionPlaceholder"
+        formControlName="description"
+      />
+      @if (getErrorMessage(form.controls.description, 'La descripción'); as msg) {
         <div class="error-text">{{ msg }}</div>
       }
     </div>
+
     <div class="field">
-      <label>Número de cuotas</label>
-      <input class="input" type="number" placeholder="0" formControlName="numberOfInstallments" />
-      @if (getErrorMessage(form.controls.numberOfInstallments, 'El número de cuotas'); as msg) {
+      <label i18n="@@deudas.form.tipo">Tipo</label>
+      <select class="input" formControlName="idCategoryType">
+        <option [ngValue]="null" disabled i18n="@@deudas.form.tipoPlaceholder">
+          Selecciona un tipo
+        </option>
+        @for (tipo of categoryTypes; track tipo.id) {
+          <option [ngValue]="tipo.id">{{ tipo.name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idCategoryType, 'El tipo'); as msg) {
         <div class="error-text">{{ msg }}</div>
       }
     </div>
-  </div>
 
-  <div class="field">
-    <label>Valor de la cuota</label>
-    <input class="input" type="number" formControlName="installmentValue" />
-    <div class="text-muted text-xs">Se calcula automáticamente: monto total ÷ número de cuotas.</div>
-  </div>
-
-  <div class="grid grid-cols-2 gap-2">
-    <div class="field">
-      <label>Fecha de inicio</label>
-      <input class="input" type="date" formControlName="startDate" />
-      @if (getErrorMessage(form.controls.startDate, 'La fecha de inicio'); as msg) {
-        <div class="error-text">{{ msg }}</div>
-      }
+    <div class="grid grid-cols-2 gap-2">
+      <div class="field">
+        <label i18n="@@deudas.form.montoTotal">Monto total</label>
+        <input class="input" type="number" placeholder="0" formControlName="totalAmount" />
+        @if (getErrorMessage(form.controls.totalAmount, 'El monto total'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label i18n="@@deudas.form.cuotas">Número de cuotas</label>
+        <input class="input" type="number" placeholder="0" formControlName="numberOfInstallments" />
+        @if (getErrorMessage(form.controls.numberOfInstallments, 'El número de cuotas'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
     </div>
-    <div class="field">
-      <label>Fecha estimada de fin</label>
-      <input class="input" type="date" formControlName="estimatedEndDate" />
-    </div>
-  </div>
 
-  <div class="flex gap-2 justify-end mt-1.5">
-    <button class="btn btn-ghost" type="button" (click)="cancelar()">Cancelar</button>
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
-      {{ esEdicion ? 'Guardar cambios' : 'Registrar deuda' }}
-    </button>
-  </div>
+    <div class="field">
+      <label i18n="@@deudas.form.valorCuota">Valor de la cuota</label>
+      <input class="input" type="number" formControlName="installmentValue" />
+      <div class="text-muted text-xs" i18n="@@deudas.form.valorCuotaAyuda">
+        Se calcula automáticamente: monto total ÷ número de cuotas.
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <div class="field">
+        <label i18n="@@deudas.form.fechaInicio">Fecha de inicio</label>
+        <input class="input" type="date" formControlName="startDate" />
+        @if (getErrorMessage(form.controls.startDate, 'La fecha de inicio'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label i18n="@@deudas.form.fechaFin">Fecha estimada de fin</label>
+        <input class="input" type="date" formControlName="estimatedEndDate" />
+      </div>
+    </div>
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@deudas.form.registrar">Registrar deuda</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
 </form>
-</div>

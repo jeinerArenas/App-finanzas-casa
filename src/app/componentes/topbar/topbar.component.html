@@ -1,7 +1,35 @@
 <div class="topbar" [class.topbar-mobile]="isMobile()">
   @if (isMobile()) {
     <button class="btn btn-icon btn-secondary" (click)="toggleSidebar()" aria-label="Abrir menú">
-      <svg width="16" height="16" viewBox="0 0 256 256"><line x1="40" y1="76" x2="216" y2="76" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line><line x1="40" y1="128" x2="216" y2="128" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line><line x1="40" y1="180" x2="216" y2="180" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line></svg>
+      <svg width="16" height="16" viewBox="0 0 256 256">
+        <line
+          x1="40"
+          y1="76"
+          x2="216"
+          y2="76"
+          stroke="currentColor"
+          stroke-width="18"
+          stroke-linecap="round"
+        ></line>
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          stroke="currentColor"
+          stroke-width="18"
+          stroke-linecap="round"
+        ></line>
+        <line
+          x1="40"
+          y1="180"
+          x2="216"
+          y2="180"
+          stroke="currentColor"
+          stroke-width="18"
+          stroke-linecap="round"
+        ></line>
+      </svg>
     </button>
   }
 
@@ -15,34 +43,169 @@
   @if (showMonthNav()) {
     <div class="flex items-center gap-2 ml-4">
       <button class="btn btn-icon btn-secondary" (click)="prevMonth()" aria-label="Mes anterior">
-        <svg width="16" height="16" viewBox="0 0 256 256" fill="none"><path d="M165 48 93 128l72 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="none">
+          <path
+            d="M165 48 93 128l72 80"
+            stroke="currentColor"
+            stroke-width="22"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
       </button>
       <div class="text-sm min-w-[140px] text-center">{{ month.monthLabel() }}</div>
       <button class="btn btn-icon btn-secondary" (click)="nextMonth()" aria-label="Mes siguiente">
-        <svg width="16" height="16" viewBox="0 0 256 256" fill="none"><path d="M91 48l72 80-72 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="none">
+          <path
+            d="M91 48l72 80-72 80"
+            stroke="currentColor"
+            stroke-width="22"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
       </button>
     </div>
   }
 
-  <div class="ml-auto relative">
+  <div class="ml-auto flex items-center gap-2">
     <button
-      (click)="toggleUserMenu()"
-      class="flex items-center gap-2 bg-transparent border-none cursor-pointer text-[color:var(--color-text)] p-1.5 rounded-[var(--radius-md)]"
+      class="btn btn-icon btn-secondary"
+      type="button"
+      (click)="toggleTheme()"
+      [attr.aria-label]="themeToggleLabel()"
+      [attr.title]="themeToggleLabel()"
     >
-      <div class="w-[30px] h-[30px] rounded-full bg-[var(--color-accent-800)] text-[color:var(--color-accent-100)] flex items-center justify-center text-xs font-semibold flex-none">
-        {{ currentUserInitials() }}
-      </div>
-      <span class="text-[13px]">{{ currentUser()?.name }}</span>
+      @if (isDarkTheme()) {
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="none">
+          <circle cx="128" cy="128" r="48" stroke="currentColor" stroke-width="16"></circle>
+          <line
+            x1="128"
+            y1="24"
+            x2="128"
+            y2="54"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="128"
+            y1="202"
+            x2="128"
+            y2="232"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="24"
+            y1="128"
+            x2="54"
+            y2="128"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="202"
+            y1="128"
+            x2="232"
+            y2="128"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="56"
+            y1="56"
+            x2="77"
+            y2="77"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="179"
+            y1="179"
+            x2="200"
+            y2="200"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="200"
+            y1="56"
+            x2="179"
+            y2="77"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+          <line
+            x1="77"
+            y1="179"
+            x2="56"
+            y2="200"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+          ></line>
+        </svg>
+      } @else {
+        <svg width="16" height="16" viewBox="0 0 256 256" fill="none">
+          <path
+            d="M216 136a92 92 0 1 1-96-104 76 76 0 0 0 96 104Z"
+            stroke="currentColor"
+            stroke-width="16"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      }
     </button>
 
-    @if (userMenuOpen()) {
-      <div class="card elev-md absolute right-0 top-[calc(100%_+_6px)] w-[180px] p-2! gap-0.5! z-10">
-        <div class="text-muted text-[11px] py-1 px-2">{{ currentUserRoleLabel() }}</div>
-        <button class="btn btn-secondary btn-block" (click)="logout()">
-          <svg width="14" height="14" viewBox="0 0 256 256"><path d="M104 48H64a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h40" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path><path d="M160 88l48 40-48 40M208 128H104" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          Cerrar sesión
-        </button>
-      </div>
-    }
+    <div class="relative">
+      <button
+        (click)="toggleUserMenu()"
+        class="flex items-center gap-2 bg-transparent border-none cursor-pointer text-[color:var(--color-text)] p-1.5 rounded-[var(--radius-md)]"
+      >
+        <div
+          class="w-[30px] h-[30px] rounded-full bg-[var(--color-accent-800)] text-[color:var(--color-accent-100)] flex items-center justify-center text-xs font-semibold flex-none"
+        >
+          {{ currentUserInitials() }}
+        </div>
+        <span class="text-[13px]">{{ currentUser()?.name }}</span>
+      </button>
+
+      @if (userMenuOpen()) {
+        <div
+          class="card elev-md absolute right-0 top-[calc(100%_+_6px)] w-[180px] p-2! gap-0.5! z-10"
+        >
+          <div class="text-muted text-[11px] py-1 px-2">{{ currentUserRoleLabel() }}</div>
+          <button class="btn btn-secondary btn-block" (click)="logout()">
+            <svg width="14" height="14" viewBox="0 0 256 256">
+              <path
+                d="M104 48H64a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h40"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="14"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M160 88l48 40-48 40M208 128H104"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="14"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            Cerrar sesión
+          </button>
+        </div>
+      }
+    </div>
   </div>
 </div>

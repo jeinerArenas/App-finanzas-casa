@@ -1,6 +1,10 @@
 <div [class]="sidebarClass">
   <div class="pt-0 px-2 pb-4">
-    <img src="/assets/img/logo-full.png" alt="FinanzFamily" class="w-full max-w-[160px] h-auto block" />
+    <img
+      src="/assets/img/logo-full.png"
+      alt="FinanzFamily"
+      class="w-full max-w-[160px] h-auto block"
+    />
   </div>
 
   <a
@@ -9,19 +13,65 @@
     routerLinkActive="nav-link-active"
     (click)="onLinkClick()"
   >
-    <svg width="16" height="16" viewBox="0 0 256 256"><rect x="40" y="40" width="70" height="70" rx="8" fill="currentColor"></rect><rect x="146" y="40" width="70" height="70" rx="8" fill="currentColor"></rect><rect x="40" y="146" width="70" height="70" rx="8" fill="currentColor"></rect><rect x="146" y="146" width="70" height="70" rx="8" fill="currentColor"></rect></svg>
-    Resumen
+    <svg width="16" height="16" viewBox="0 0 256 256">
+      <rect x="40" y="40" width="70" height="70" rx="8" fill="currentColor"></rect>
+      <rect x="146" y="40" width="70" height="70" rx="8" fill="currentColor"></rect>
+      <rect x="40" y="146" width="70" height="70" rx="8" fill="currentColor"></rect>
+      <rect x="146" y="146" width="70" height="70" rx="8" fill="currentColor"></rect>
+    </svg>
+    <span i18n="@@sidebar.resumen">Resumen</span>
   </a>
 
-  <a
-    class="nav-link"
-    routerLink="/movimientos"
-    routerLinkActive="nav-link-active"
-    (click)="onLinkClick()"
-  >
-    <svg width="16" height="16" viewBox="0 0 256 256"><line x1="40" y1="76" x2="216" y2="76" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line><line x1="40" y1="128" x2="216" y2="128" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line><line x1="40" y1="180" x2="216" y2="180" stroke="currentColor" stroke-width="18" stroke-linecap="round"></line></svg>
-    Movimientos
-  </a>
+  <div>
+    <button
+      class="nav-link w-full"
+      type="button"
+      (click)="toggleMovimientos()"
+      [attr.aria-expanded]="movimientosOpen()"
+    >
+      <span [innerHTML]="expenseIcon"></span>
+      <span i18n="@@sidebar.movimientos">Movimientos</span>
+      <svg
+        class="ml-auto transition-transform duration-150"
+        [class.rotate-90]="movimientosOpen()"
+        width="12"
+        height="12"
+        viewBox="0 0 256 256"
+        fill="none"
+      >
+        <path
+          d="M96 48l80 80-80 80"
+          stroke="currentColor"
+          stroke-width="20"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </button>
+
+    @if (movimientosOpen()) {
+      <div class="flex flex-col gap-1 pl-4 mt-1">
+        <a
+          class="nav-link"
+          routerLink="/movimientos/ingresos"
+          routerLinkActive="nav-link-active"
+          (click)="onLinkClick()"
+        >
+          <span [innerHTML]="incomeIcon"></span>
+          <span i18n="@@sidebar.ingresos">Ingresos</span>
+        </a>
+        <a
+          class="nav-link"
+          routerLink="/movimientos/gastos"
+          routerLinkActive="nav-link-active"
+          (click)="onLinkClick()"
+        >
+          <span [innerHTML]="expenseIcon"></span>
+          <span i18n="@@sidebar.gastos">Gastos</span>
+        </a>
+      </div>
+    }
+  </div>
 
   <a
     class="nav-link"
@@ -29,8 +79,8 @@
     routerLinkActive="nav-link-active"
     (click)="onLinkClick()"
   >
-    <svg width="16" height="16" viewBox="0 0 256 256"><rect x="32" y="72" width="192" height="128" rx="12" fill="none" stroke="currentColor" stroke-width="14"></rect><line x1="32" y1="108" x2="224" y2="108" stroke="currentColor" stroke-width="14"></line><line x1="64" y1="160" x2="120" y2="160" stroke="currentColor" stroke-width="14" stroke-linecap="round"></line></svg>
-    Deudas
+    <span [innerHTML]="debtIcon"></span>
+    <span i18n="@@sidebar.deudas">Deudas</span>
   </a>
 
   <a
@@ -39,8 +89,8 @@
     routerLinkActive="nav-link-active"
     (click)="onLinkClick()"
   >
-    <svg width="16" height="16" viewBox="0 0 256 256"><path d="M48 48h88l120 120-88 88L48 136Z" fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="round"></path><circle cx="90" cy="90" r="13" fill="currentColor"></circle></svg>
-    Categorías
+    <span [innerHTML]="categoryIcon"></span>
+    <span i18n="@@sidebar.categorias">Categorías</span>
   </a>
 
   @if (isAdmin()) {
@@ -50,8 +100,8 @@
       routerLinkActive="nav-link-active"
       (click)="onLinkClick()"
     >
-      <svg width="16" height="16" viewBox="0 0 256 256"><circle cx="96" cy="88" r="34" fill="none" stroke="currentColor" stroke-width="14"></circle><path d="M40 208c0-50 40-80 88-64" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round"></path><circle cx="178" cy="104" r="26" fill="none" stroke="currentColor" stroke-width="12"></circle><path d="M158 208c4-38 30-58 62-52" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"></path></svg>
-      Usuarios
+      <span [innerHTML]="userIcon"></span>
+      <span i18n="@@sidebar.usuarios">Usuarios</span>
     </a>
     <a
       class="nav-link"
@@ -59,8 +109,25 @@
       routerLinkActive="nav-link-active"
       (click)="onLinkClick()"
     >
-      <svg width="16" height="16" viewBox="0 0 256 256"><circle cx="128" cy="128" r="88" fill="none" stroke="currentColor" stroke-width="14"></circle><path d="M128 76v56l40 24" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-      Actividad
+      <svg width="16" height="16" viewBox="0 0 256 256">
+        <circle
+          cx="128"
+          cy="128"
+          r="88"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="14"
+        ></circle>
+        <path
+          d="M128 76v56l40 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+      <span i18n="@@sidebar.actividad">Actividad</span>
     </a>
   }
 </div>

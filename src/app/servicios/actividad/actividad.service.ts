@@ -10,10 +10,14 @@ export class ActividadService {
   readonly logs = this._logs.asReadonly();
 
   cargar(): void {
-    this.helper.get<BackendActivityLog[]>('activity-logs').subscribe((logs) => this._logs.set(logs));
+    this.helper
+      .get<BackendActivityLog[]>('activity-logs')
+      .subscribe((logs) => this._logs.set(logs));
   }
 
   registrar(action: LogAction, detail: string): void {
-    this.helper.post('activity-logs', { action, detail }).subscribe({ next: () => {}, error: () => {} });
+    this.helper
+      .post('activity-logs', { action, detail })
+      .subscribe({ next: () => {}, error: () => {} });
   }
 }

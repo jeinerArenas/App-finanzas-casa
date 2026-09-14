@@ -1,23 +1,20 @@
 <div class="card elev-sm">
   <div class="flex justify-between items-center gap-3 flex-wrap">
     <div>
-      <div class="card-title">Deudas y pagos de cuotas</div>
-      <div class="text-muted text-xs max-w-[520px]">
+      <div class="card-title" i18n="@@deudas.titulo">Deudas y pagos de cuotas</div>
+      <div class="text-muted text-xs max-w-[520px]" i18n="@@deudas.descripcion">
         Registra tarjetas de crédito, préstamos o compras a cuotas. Cuando registres un gasto en
         Movimientos podrás asociarlo a una deuda y abonar una, varias o todas las cuotas restantes.
       </div>
     </div>
-    <button class="btn btn-primary" type="button" (click)="abrirCrear()">Registrar deuda</button>
+    <button class="btn btn-primary" type="button" (click)="abrirCrear()" i18n="@@deudas.registrar">
+      Registrar deuda
+    </button>
   </div>
 
   @if (error()) {
     <div class="error-text mt-2">{{ error() }}</div>
   }
 
-  <app-data-table
-    [columns]="columns"
-    [data]="deudas()"
-    [actions]="actions"
-    emptyMessage="Aún no hay deudas registradas."
-  />
+  <app-tabla-cbz-v2 [configuration]="tabla()" (events)="onTableEvent($event)" />
 </div>

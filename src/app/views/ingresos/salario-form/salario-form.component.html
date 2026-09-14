@@ -1,0 +1,69 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    <div class="text-muted text-[13px]" i18n="@@ingresos.salario.ayuda">
+      El salario se aplica automáticamente cada mes desde la fecha de inicio hasta que registres uno
+      nuevo — al crear otro salario para la misma persona, este se cierra solo.
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.form.quien">Quién</label>
+      <select class="input" formControlName="idUser">
+        <option [ngValue]="null" disabled i18n="@@ingresos.form.quienPlaceholder">
+          Selecciona un miembro
+        </option>
+        @for (m of miembros; track m.id_user) {
+          <option [ngValue]="m.id_user">{{ m.full_name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idUser, 'Quién'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="grid grid-cols-2 gap-2">
+      <div class="field">
+        <label i18n="@@ingresos.salario.monto">Monto mensual</label>
+        <input class="input" type="number" placeholder="0" formControlName="amount" />
+        @if (getErrorMessage(form.controls.amount, 'El monto'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+      <div class="field">
+        <label i18n="@@ingresos.form.fechaInicio">Fecha de inicio</label>
+        <input class="input" type="date" formControlName="startDate" />
+        @if (getErrorMessage(form.controls.startDate, 'La fecha de inicio'); as msg) {
+          <div class="error-text">{{ msg }}</div>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label i18n="@@ingresos.variable.tituloCampo">Variable (bono, comisión...) — opcional</label>
+      <div class="grid grid-cols-2 gap-2">
+        <input
+          class="input"
+          placeholder="Descripción"
+          i18n-placeholder="@@ingresos.variable.descripcionPlaceholder"
+          formControlName="variableDescription"
+        />
+        <input class="input" type="number" placeholder="0" formControlName="variableAmount" />
+      </div>
+      @if (getErrorMessage(form.controls.variableAmount, 'El monto de la variable'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@ingresos.salario.registrar">Registrar salario</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
+</form>

@@ -1,10 +1,8 @@
-export * from './storage.service';
 export * from './auth/auth.service';
 export * from './helper/helper.service';
 export * from './login/login.service';
 export * from './registro/registro.service';
 export * from './month.service';
-export * from './category.service';
 export * from './goal/goal.service';
 export * from './roles/roles.service';
 export * from './usuarios/usuarios.service';
@@ -14,3 +12,6 @@ export * from './gastos/gastos.service';
 export * from './deudas/deudas.service';
 export * from './actividad/actividad.service';
 export * from './dashboard.service';
+export * from './theme/theme.service';
+export * from './salarios/salarios.service';
+export * from './activos/activos.service';

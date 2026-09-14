@@ -1,5 +1,7 @@
 <div class="card elev-sm">
-  <div class="card-title">Registro de actividad</div>
-  <div class="text-muted text-xs mb-1">Quién agregó, editó o eliminó movimientos.</div>
-  <app-data-table [columns]="columns" [data]="rows()" emptyMessage="Todavía no hay actividad registrada." />
+  <div class="card-title" i18n="@@actividad.titulo">Registro de actividad</div>
+  <div class="text-muted text-xs mb-1" i18n="@@actividad.ayuda">
+    Quién agregó, editó o eliminó movimientos.
+  </div>
+  <app-tabla-cbz-v2 [configuration]="tabla()" />
 </div>

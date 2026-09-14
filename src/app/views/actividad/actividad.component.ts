@@ -1,20 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActividadService } from '../../servicios';
-import { LOG_ACTION_LABELS, TableColumn } from '../../interfaces';
-import { DataTableComponent } from '../../componentes/data-table/data-table.component';
-
-interface ActividadRow {
-  id_activity_log: number;
-  user_name: string;
-  action: keyof typeof LOG_ACTION_LABELS;
-  detail: string;
-  dateFmt: string;
-}
+import { ActividadRow, ITableCBZ, LOG_ACTION_LABELS } from '../../interfaces';
+import { TablaCbzV2Component } from '../../componentes/tabla-cbz-v2/tabla-cbz-v2.component';
 
 @Component({
   selector: 'app-actividad',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DataTableComponent],
+  imports: [TablaCbzV2Component],
   templateUrl: './actividad.component.html',
 })
 export class ActividadComponent {
@@ -23,27 +15,37 @@ export class ActividadComponent {
   readonly actionLabels = LOG_ACTION_LABELS;
 
   readonly rows = computed<ActividadRow[]>(() =>
-    this.actividadService.logs().map((l) => ({
-      ...l,
-      dateFmt: new Date(l.created_at.replace(' ', 'T')).toLocaleString('es-CO', {
+    this.actividadService.logs().map((log) => ({
+      id_activity_log: log.id_activity_log,
+      user_name: log.user_name,
+      action: log.action,
+      detail: log.detail,
+      dateFmt: new Date(log.created_at.replace(' ', 'T')).toLocaleString('es-CO', {
         dateStyle: 'medium',
         timeStyle: 'short',
       }),
     })),
   );
 
-  readonly columns: TableColumn<ActividadRow>[] = [
-    { field: 'dateFmt', header: 'Fecha' },
-    { field: 'user_name', header: 'Usuario' },
-    {
-      field: 'action',
-      header: 'Acción',
-      type: 'tag',
-      tagClass: () => 'tag-outline',
-      format: (row) => this.actionLabels[row.action],
+  readonly tabla = computed<ITableCBZ<ActividadRow>>(() => ({
+    data: this.rows(),
+    configurationColumns: {
+      keys: ['dateFmt', 'user_name', 'action', 'detail'],
+      i18n: {
+        dateFmt: $localize`:@@actividad.col.fecha:Fecha`,
+        user_name: $localize`:@@actividad.col.usuario:Usuario`,
+        action: $localize`:@@actividad.col.accion:Acción`,
+        detail: $localize`:@@actividad.col.detalle:Detalle`,
+      },
+      tagColumns: ['action'],
+      tagClass: { action: () => 'tag-outline' },
+      format: { action: (row: ActividadRow) => this.actionLabels[row.action] },
     },
-    { field: 'detail', header: 'Detalle' },
-  ];
+    configurationPagination: { visible: true, pageSize: 20, pageSizeOptions: [10, 20, 30, 50] },
+    configurationExport: { fileName: $localize`:@@actividad.export.archivo:actividad` },
+    configurationRows: { keyColumn: 'id_activity_log' },
+    emptyMessage: $localize`:@@actividad.vacio:Todavía no hay actividad registrada.`,
+  }));
 
   constructor() {
     this.actividadService.cargar();

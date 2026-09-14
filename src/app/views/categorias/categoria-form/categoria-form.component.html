@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <app-modal-shell [icon]="icon" [title]="titulo" (close)="cancelar()">
+    <div class="field">
+      <label i18n="@@categorias.form.nombre">Nombre</label>
+      <input
+        class="input"
+        placeholder="Comida, transporte, entretenimiento..."
+        i18n-placeholder="@@categorias.form.nombrePlaceholder"
+        formControlName="categoryName"
+      />
+      @if (getErrorMessage(form.controls.categoryName, 'El nombre'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label i18n="@@categorias.form.tipo">Tipo</label>
+      <select class="input" formControlName="idCategoryType">
+        <option [ngValue]="null" disabled i18n="@@categorias.form.tipoPlaceholder">
+          Selecciona un tipo
+        </option>
+        @for (tipo of categoryTypes; track tipo.id) {
+          <option [ngValue]="tipo.id">{{ tipo.name }}</option>
+        }
+      </select>
+      @if (getErrorMessage(form.controls.idCategoryType, 'El tipo'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div class="field">
+      <label i18n="@@categorias.form.presupuesto">Presupuesto mensual (opcional)</label>
+      <input
+        class="input"
+        type="number"
+        placeholder="Sin límite"
+        i18n-placeholder="@@categorias.sinLimite"
+        formControlName="monthlyBudget"
+      />
+      @if (getErrorMessage(form.controls.monthlyBudget, 'El presupuesto'); as msg) {
+        <div class="error-text">{{ msg }}</div>
+      }
+    </div>
+
+    <div modalFooter>
+      <button class="btn btn-ghost" type="button" (click)="cancelar()" i18n="@@comun.cancelar">
+        Cancelar
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        @if (esEdicion) {
+          <ng-container i18n="@@comun.guardarCambios">Guardar cambios</ng-container>
+        } @else {
+          <ng-container i18n="@@categorias.form.crear">Crear categoría</ng-container>
+        }
+      </button>
+    </div>
+  </app-modal-shell>
+</form>

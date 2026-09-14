@@ -1,18 +1,27 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  output,
+  signal,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map, startWith } from 'rxjs';
-import { AuthService, MonthService } from '../../servicios';
+import { AuthService, MonthService, ThemeService } from '../../servicios';
 
 const TITLES: Record<string, string> = {
   '/dashboard': 'Resumen',
-  '/movimientos': 'Movimientos',
+  '/movimientos/ingresos': 'Ingresos',
+  '/movimientos/gastos': 'Gastos',
   '/categorias': 'Categorías',
   '/usuarios': 'Usuarios',
   '/actividad': 'Actividad',
 };
 
-const MONTH_NAV_ROUTES = new Set(['/dashboard', '/movimientos', '/categorias']);
+const MONTH_NAV_ROUTES = new Set(['/dashboard', '/movimientos/gastos', '/categorias']);
 
 @Component({
   selector: 'app-topbar',
@@ -22,6 +31,7 @@ const MONTH_NAV_ROUTES = new Set(['/dashboard', '/movimientos', '/categorias']);
 export class TopbarComponent {
   private readonly router = inject(Router);
   private readonly auth = inject(AuthService);
+  private readonly themeService = inject(ThemeService);
   protected readonly month = inject(MonthService);
 
   readonly isMobile = input(false);
@@ -57,8 +67,19 @@ export class TopbarComponent {
 
   readonly userMenuOpen = signal(false);
 
+  readonly isDarkTheme = this.themeService.isDark;
+  readonly themeToggleLabel = computed<string>(() =>
+    this.isDarkTheme()
+      ? $localize`:@@topbar.temaClaro:Cambiar a modo claro`
+      : $localize`:@@topbar.temaOscuro:Cambiar a modo oscuro`,
+  );
+
   toggleUserMenu(): void {
     this.userMenuOpen.update((v) => !v);
+  }
+
+  toggleTheme(): void {
+    this.themeService.toggle();
   }
 
   toggleSidebar(): void {

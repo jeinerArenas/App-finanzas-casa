@@ -5,6 +5,8 @@ import { BackendDebt, CrearDeudaPayload, DeudaFormControls } from '../../../inte
 import { getErrorMessage } from '../../../utils/form-errors';
 import { integerValidator } from '../../../utils/validators';
 import { CATEGORY_TYPES } from '../../../utils/category-types';
+import { ModalShellComponent } from '../../../componentes/modal/modal-shell.component';
+import { DEBT_ICON } from '../../../utils/icons';
 
 export interface DeudaFormData {
   deuda: BackendDebt | null;
@@ -23,7 +25,7 @@ function addMonths(dateIso: string, months: number): string {
 @Component({
   selector: 'app-deuda-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ModalShellComponent],
   templateUrl: './deuda-form.component.html',
 })
 export class DeudaFormComponent {
@@ -36,6 +38,10 @@ export class DeudaFormComponent {
   readonly esEdicion = this.deuda() !== null;
   readonly categoryTypes = CATEGORY_TYPES;
   readonly getErrorMessage = getErrorMessage;
+  readonly icon = DEBT_ICON;
+  readonly titulo = this.esEdicion
+    ? $localize`:@@deudas.form.tituloEditar:Editar deuda`
+    : $localize`:@@deudas.form.tituloCrear:Registrar deuda`;
 
   readonly form: FormGroup<DeudaFormControls> = this.fb.group({
     description: this.fb.control(this.deuda()?.description ?? '', [
@@ -46,18 +52,20 @@ export class DeudaFormComponent {
       Validators.required,
       Validators.min(0.01),
     ]),
-    numberOfInstallments: this.fb.control<number | null>(this.deuda()?.number_of_installments ?? null, [
-      Validators.required,
-      Validators.min(1),
-      integerValidator,
-    ]),
+    numberOfInstallments: this.fb.control<number | null>(
+      this.deuda()?.number_of_installments ?? null,
+      [Validators.required, Validators.min(1), integerValidator],
+    ),
     installmentValue: this.fb.control<number | null>(
       { value: this.montoInicial('installment_value'), disabled: true },
       [Validators.required, Validators.min(0.01)],
     ),
     startDate: this.fb.control(this.deuda()?.start_date ?? todayIso(), Validators.required),
     estimatedEndDate: this.fb.control(this.deuda()?.estimated_end_date ?? ''),
-    idCategoryType: this.fb.control<number | null>(this.deuda()?.id_category_type ?? null, Validators.required),
+    idCategoryType: this.fb.control<number | null>(
+      this.deuda()?.id_category_type ?? null,
+      Validators.required,
+    ),
   });
 
   constructor() {

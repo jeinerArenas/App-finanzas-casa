@@ -1,9 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { BackendRole, BackendUser, CrearUsuarioPayload, UsuarioFormControls } from '../../../interfaces';
+import {
+  BackendRole,
+  BackendUser,
+  CrearUsuarioPayload,
+  UsuarioFormControls,
+} from '../../../interfaces';
 import { getErrorMessage } from '../../../utils/form-errors';
 import { SoloNumerosDirective, SoloTextoDirective } from '../../../directivas';
+import { ModalShellComponent } from '../../../componentes/modal/modal-shell.component';
+import { USER_ICON } from '../../../utils/icons';
 
 const PATRON_TEXTO = /^[a-zA-ZÀ-ÿ\s]+$/;
 const PATRON_NUMERICO = /^[0-9]+$/;
@@ -16,7 +23,7 @@ export interface UsuarioFormData {
 @Component({
   selector: 'app-usuario-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, SoloNumerosDirective, SoloTextoDirective],
+  imports: [ReactiveFormsModule, SoloNumerosDirective, SoloTextoDirective, ModalShellComponent],
   templateUrl: './usuario-form.component.html',
 })
 export class UsuarioFormComponent {
@@ -28,6 +35,10 @@ export class UsuarioFormComponent {
   readonly roles = this.data.roles;
   private readonly usuario = () => this.data.usuario;
   readonly esEdicion = this.usuario() !== null;
+  readonly icon = USER_ICON;
+  readonly titulo = this.esEdicion
+    ? $localize`:@@usuarios.form.tituloEditar:Editar usuario`
+    : $localize`:@@usuarios.form.tituloCrear:Agregar nuevo usuario`;
 
   readonly form: FormGroup<UsuarioFormControls> = this.fb.group({
     documentNumber: this.fb.control(this.usuario()?.document_number ?? '', [

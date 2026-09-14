@@ -23,27 +23,31 @@ export class HelperService {
   private readonly auth = inject(AuthService);
 
   get<T>(path: string, params?: Record<string, string | number | boolean>): Observable<T> {
-    return this.http
-      .get<ApiEnvelope<T>>(this.url(path), { headers: this.headers(), params })
-      .pipe(map((res) => this.unwrap(res)), catchError((err) => this.toError(err)));
+    return this.http.get<ApiEnvelope<T>>(this.url(path), { headers: this.headers(), params }).pipe(
+      map((res) => this.unwrap(res)),
+      catchError((err) => this.toError(err)),
+    );
   }
 
   post<T>(path: string, body: unknown = {}): Observable<T> {
-    return this.http
-      .post<ApiEnvelope<T>>(this.url(path), body, { headers: this.headers() })
-      .pipe(map((res) => this.unwrap(res)), catchError((err) => this.toError(err)));
+    return this.http.post<ApiEnvelope<T>>(this.url(path), body, { headers: this.headers() }).pipe(
+      map((res) => this.unwrap(res)),
+      catchError((err) => this.toError(err)),
+    );
   }
 
   put<T>(path: string, body: unknown = {}): Observable<T> {
-    return this.http
-      .put<ApiEnvelope<T>>(this.url(path), body, { headers: this.headers() })
-      .pipe(map((res) => this.unwrap(res)), catchError((err) => this.toError(err)));
+    return this.http.put<ApiEnvelope<T>>(this.url(path), body, { headers: this.headers() }).pipe(
+      map((res) => this.unwrap(res)),
+      catchError((err) => this.toError(err)),
+    );
   }
 
   delete<T>(path: string): Observable<T> {
-    return this.http
-      .delete<ApiEnvelope<T>>(this.url(path), { headers: this.headers() })
-      .pipe(map((res) => this.unwrap(res)), catchError((err) => this.toError(err)));
+    return this.http.delete<ApiEnvelope<T>>(this.url(path), { headers: this.headers() }).pipe(
+      map((res) => this.unwrap(res)),
+      catchError((err) => this.toError(err)),
+    );
   }
 
   private url(path: string): string {
@@ -66,7 +70,8 @@ export class HelperService {
 
     const body = err.error as (Partial<ApiEnvelope<unknown>> & LaravelValidationError) | null;
     const firstFieldError = body?.errors ? Object.values(body.errors)[0]?.[0] : undefined;
-    const message = firstFieldError ?? body?.statusText ?? body?.message ?? 'Error de conexión con el servidor.';
+    const message =
+      firstFieldError ?? body?.statusText ?? body?.message ?? 'Error de conexión con el servidor.';
     return throwError(() => new Error(message));
   }
 }

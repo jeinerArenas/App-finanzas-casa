@@ -2,17 +2,17 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { DecimalPipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StatCardComponent } from '../../componentes';
-import { DataTableComponent } from '../../componentes/data-table/data-table.component';
+import { TablaCbzV2Component } from '../../componentes/tabla-cbz-v2/tabla-cbz-v2.component';
 import { DashboardService, GastosService, GoalService, IngresosService } from '../../servicios';
 import { HistoryRow } from '../../servicios/dashboard.service';
-import { GoalFormControls, TableColumn } from '../../interfaces';
+import { GoalFormControls, ITableCBZ } from '../../interfaces';
 import { formatCurrency } from '../../utils/currency';
 import { getErrorMessage } from '../../utils/form-errors';
 
 @Component({
   selector: 'app-dashboard',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, StatCardComponent, DecimalPipe, DataTableComponent],
+  imports: [ReactiveFormsModule, StatCardComponent, DecimalPipe, TablaCbzV2Component],
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
@@ -28,17 +28,25 @@ export class DashboardComponent {
   readonly goal = this.goalService.goal;
   readonly getErrorMessage = getErrorMessage;
 
-  readonly historyColumns: TableColumn<HistoryRow>[] = [
-    { field: 'label', header: 'Mes' },
-    { field: 'incomeFmt', header: 'Ingresos' },
-    { field: 'expenseFmt', header: 'Gastos' },
-    {
-      field: 'savingsFmt',
-      header: 'Ahorro',
-      cellClass: (row) =>
-        row.savingsPositive ? 'text-[color:var(--color-accent-300)]' : 'text-[color:var(--color-neutral-400)]',
+  readonly historyTable = computed<ITableCBZ<HistoryRow>>(() => ({
+    data: this.summary().historyRows,
+    configurationColumns: {
+      keys: ['label', 'incomeFmt', 'expenseFmt', 'savingsFmt'],
+      i18n: {
+        label: $localize`:@@dashboard.col.mes:Mes`,
+        incomeFmt: $localize`:@@dashboard.col.ingresos:Ingresos`,
+        expenseFmt: $localize`:@@dashboard.col.gastos:Gastos`,
+        savingsFmt: $localize`:@@dashboard.col.ahorro:Ahorro`,
+      },
+      styleCell: {
+        savingsFmt: (row: HistoryRow) => ({
+          color: row.savingsPositive ? 'var(--color-accent-300)' : 'var(--color-neutral-400)',
+        }),
+      },
     },
-  ];
+    configurationRows: { keyColumn: 'key' },
+    emptyMessage: $localize`:@@dashboard.historial.vacio:Todavía no hay meses registrados.`,
+  }));
 
   readonly goalPct = computed(() => {
     const g = this.goal();
@@ -53,7 +61,9 @@ export class DashboardComponent {
     const g = this.goal();
     return !!g && this.summary().cumTotal >= Number(g.amount);
   });
-  readonly hasAlerts = computed(() => this.overBudgetCategories().length > 0 || this.goalAchieved());
+  readonly hasAlerts = computed(
+    () => this.overBudgetCategories().length > 0 || this.goalAchieved(),
+  );
 
   readonly goalForm: FormGroup<GoalFormControls> = this.fb.group({
     name: this.fb.control('', Validators.required),
@@ -73,7 +83,9 @@ export class DashboardComponent {
     }
 
     const { name, amount } = this.goalForm.getRawValue();
-    this.goalService.set(name, amount as number).subscribe(() => this.goalForm.reset({ name: '', amount: null }));
+    this.goalService
+      .set(name, amount as number)
+      .subscribe(() => this.goalForm.reset({ name: '', amount: null }));
   }
 
   clearGoal(): void {
