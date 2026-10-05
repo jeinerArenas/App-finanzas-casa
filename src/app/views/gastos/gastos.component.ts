@@ -78,11 +78,12 @@ export class GastosComponent {
     },
     configurationRows: { keyColumn: 'id_expense' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
       {
         id: 'eliminar',
         icon: TRASH_ICON,
         label: $localize`:@@comun.eliminar:Eliminar`,
+        variant: 'danger',
         show: () => this.canDelete(),
       },
     ],

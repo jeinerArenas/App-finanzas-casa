@@ -88,7 +88,7 @@ export class CategoriasComponent {
     },
     configurationRows: { keyColumn: 'id_category' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
     ],
     stickyHeader: true,
     emptyMessage: $localize`:@@categorias.vacio:No hay categorías registradas.`,

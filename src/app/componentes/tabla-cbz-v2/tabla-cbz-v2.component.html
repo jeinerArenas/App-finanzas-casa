@@ -1,28 +1,84 @@
 <div class="tabla-cbz">
-  @if (showExport()) {
-    <div class="flex justify-end mb-2">
-      <button
-        class="btn btn-secondary"
-        type="button"
-        (click)="exportData()"
-        i18n="@@tablaCbz.export"
-      >
-        Exportar
-      </button>
+  <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-[var(--color-divider)]">
+    <div class="flex items-center gap-2 flex-wrap flex-1 min-w-0">
+      @if (searchVisible()) {
+        <div class="relative flex-1 w-full sm:w-auto sm:min-w-[160px] sm:max-w-[300px]">
+          <span
+            class="absolute left-2.5 top-1/2 -translate-y-1/2 flex pointer-events-none text-[color-mix(in_srgb,var(--color-text)_45%,transparent)] [&>svg]:block"
+            [innerHTML]="searchIconHtml"
+          ></span>
+          <input
+            class="input pl-8! rounded-[10px]! bg-[var(--color-bg)]! text-[13px]!"
+            type="text"
+            [value]="searchTerm()"
+            (input)="onSearchInput($event)"
+            [placeholder]="searchPlaceholder()"
+            [attr.aria-label]="searchPlaceholder()"
+          />
+        </div>
+      }
+      @if (showExport()) {
+        <button
+          type="button"
+          [class]="toolbarButtonClasses"
+          (click)="exportData()"
+          [attr.aria-label]="exportLabel()"
+          [attr.title]="exportLabel()"
+          [innerHTML]="exportIconHtml"
+        ></button>
+      }
     </div>
-  }
+
+    <div class="flex items-center gap-2 flex-wrap">
+      @for (action of visibleToolbarActions(); track action.id) {
+        @if (action.type === 'button') {
+          <button
+            type="button"
+            [class]="toolbarButtonClasses"
+            [disabled]="action.disabled ?? false"
+            [attr.aria-label]="action.label ?? action.tooltip"
+            [attr.title]="action.tooltip ?? action.label"
+            (click)="onToolbarButtonClick(action)"
+            [innerHTML]="iconHtml(action.icon ?? '')"
+          ></button>
+        } @else {
+          <label
+            class="flex items-center gap-1.5 text-[12.5px] text-[color-mix(in_srgb,var(--color-text)_75%,transparent)]"
+          >
+            <input
+              type="checkbox"
+              class="w-[15px] h-[15px] accent-[var(--color-accent)]"
+              [checked]="isToolbarChecked(action)"
+              [disabled]="action.disabled ?? false"
+              (change)="onToolbarCheckboxChange(action, $event)"
+            />
+            <span>{{ action.label }}</span>
+          </label>
+        }
+      }
+      <ng-content select="[tableToolbarActions]"></ng-content>
+    </div>
+  </div>
 
   <div class="overflow-x-auto">
-    <table class="table" [class.tabla-cbz-sticky]="configuration().stickyHeader">
+    <table class="table">
       <thead>
         <tr>
           @for (key of visibleColumns(); track key) {
             <th
-              [class]="headerClass(key)"
-              [class.tabla-cbz-left]="isLeft(key)"
+              [class]="headerClasses(key)"
               [style]="headerStyle(key)"
+              [attr.role]="isSortable(key) ? 'button' : null"
+              [attr.tabindex]="isSortable(key) ? 0 : null"
+              (click)="toggleSort(key)"
+              (keydown.enter)="toggleSort(key)"
             >
-              {{ headerLabel(key) }}
+              <span class="inline-flex items-center gap-1.5">
+                <span>{{ headerLabel(key) }}</span>
+                @if (isSortable(key)) {
+                  <span [class]="sortIconClasses(key)" [innerHTML]="sortIconHtml"></span>
+                }
+              </span>
             </th>
           }
           @if (hasActions()) {
@@ -34,11 +90,7 @@
         @for (row of pagedData(); track rowKey(row, $index)) {
           <tr [style]="rowStyle(row)" (click)="onRowClick(row)">
             @for (key of visibleColumns(); track key) {
-              <td
-                [class]="alignClass(key)"
-                [class.tabla-cbz-left]="isLeft(key)"
-                [style]="cellStyle(row, key)"
-              >
+              <td [class]="cellClasses(key)" [style]="cellStyle(row, key)">
                 @if (cellTemplate(key); as tpl) {
                   <ng-container *ngTemplateOutlet="tpl; context: { $implicit: row }"></ng-container>
                 } @else if (isTag(key)) {
@@ -49,11 +101,11 @@
               </td>
             }
             @if (hasActions()) {
-              <td class="flex gap-0.5 justify-end">
+              <td class="flex gap-1 justify-end">
                 @for (action of visibleActions(row); track action.id) {
                   <button
-                    class="btn btn-icon btn-ghost"
                     type="button"
+                    [class]="actionButtonClasses(action)"
                     [disabled]="isActionDisabled(action, row)"
                     [attr.aria-label]="action.label"
                     (click)="onAction(action, row, $event)"
@@ -73,40 +125,68 @@
   </div>
 
   @if (showPagination()) {
-    <div class="tabla-cbz-pager flex flex-wrap items-center justify-between gap-3 mt-2">
-      <label class="flex items-center gap-1.5 text-xs text-muted">
+    <div
+      class="flex flex-wrap items-center justify-between gap-3 mt-3 pt-3 border-t border-[var(--color-divider)]"
+    >
+      <label
+        class="flex items-center gap-1.5 text-[12.5px] text-[color-mix(in_srgb,var(--color-text)_55%,transparent)]"
+      >
         <span i18n="@@tablaCbz.rowsPerPage">Filas por página</span>
-        <select class="input" [value]="pageSize()" (change)="changePageSize($event)">
+        <select
+          class="input w-[65px]! text-[13px]! text-center"
+          [value]="pageSize()"
+          (change)="changePageSize($event)"
+        >
           @for (option of pageSizeOptions(); track option) {
             <option [value]="option">{{ option }}</option>
           }
         </select>
       </label>
 
-      <div class="flex items-center gap-2">
-        <span class="text-xs text-muted" i18n="@@tablaCbz.pageStatus"
-          >Página {{ pageIndex() + 1 }} de {{ totalPages() }}</span
+      <div class="flex items-center gap-3 flex-wrap">
+        <span
+          class="text-[13px] text-[color-mix(in_srgb,var(--color-text)_55%,transparent)] whitespace-nowrap"
+          i18n="@@tablaCbz.pageRange"
+          >{{ rangeStart() }}–{{ rangeEnd() }} de {{ totalRows() }}</span
         >
-        <button
-          class="btn btn-icon btn-ghost"
-          type="button"
-          [disabled]="pageIndex() === 0"
-          (click)="prevPage()"
-          aria-label="Página anterior"
-          i18n-aria-label="@@tablaCbz.prevPage"
-        >
-          &lsaquo;
-        </button>
-        <button
-          class="btn btn-icon btn-ghost"
-          type="button"
-          [disabled]="pageIndex() >= totalPages() - 1"
-          (click)="nextPage()"
-          aria-label="Página siguiente"
-          i18n-aria-label="@@tablaCbz.nextPage"
-        >
-          &rsaquo;
-        </button>
+        <div class="flex items-center gap-1">
+          <button
+            type="button"
+            [class]="pagerNavButtonClasses"
+            [disabled]="pageIndex() === 0"
+            (click)="goToFirstPage()"
+            aria-label="Primera página"
+            i18n-aria-label="@@tablaCbz.firstPage"
+            [innerHTML]="firstPageIconHtml"
+          ></button>
+          <button
+            type="button"
+            [class]="pagerNavButtonClasses"
+            [disabled]="pageIndex() === 0"
+            (click)="prevPage()"
+            aria-label="Página anterior"
+            i18n-aria-label="@@tablaCbz.prevPage"
+            [innerHTML]="prevPageIconHtml"
+          ></button>
+          <button
+            type="button"
+            [class]="pagerNavButtonClasses"
+            [disabled]="pageIndex() >= totalPages() - 1"
+            (click)="nextPage()"
+            aria-label="Página siguiente"
+            i18n-aria-label="@@tablaCbz.nextPage"
+            [innerHTML]="nextPageIconHtml"
+          ></button>
+          <button
+            type="button"
+            [class]="pagerNavButtonClasses"
+            [disabled]="pageIndex() >= totalPages() - 1"
+            (click)="goToLastPage()"
+            aria-label="Última página"
+            i18n-aria-label="@@tablaCbz.lastPage"
+            [innerHTML]="lastPageIconHtml"
+          ></button>
+        </div>
       </div>
     </div>
   }

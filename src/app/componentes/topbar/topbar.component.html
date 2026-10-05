@@ -69,6 +69,82 @@
   }
 
   <div class="ml-auto flex items-center gap-2">
+    <div class="relative">
+      <button
+        class="btn btn-icon btn-secondary"
+        type="button"
+        (click)="toggleQuickMenu()"
+        aria-label="Registro rápido"
+        i18n-aria-label="@@topbar.registroRapido"
+        title="Registro rápido"
+        i18n-title="@@topbar.registroRapido"
+        [innerHTML]="quickActionsIconHtml"
+      ></button>
+
+      @if (quickMenuOpen()) {
+        <div
+          class="card elev-md absolute right-0 top-[calc(100%_+_6px)] w-[300px] p-3! gap-2.5! z-10"
+        >
+          <div class="text-[13px] font-medium px-0.5" i18n="@@topbar.registroRapido.titulo">
+            Acciones rápidas
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button
+              class="flex flex-col items-start gap-2 p-3 rounded-lg border border-[var(--color-divider)] bg-transparent cursor-pointer text-left transition-colors hover:bg-[color-mix(in_srgb,var(--color-text)_5%,transparent)] hover:border-[color-mix(in_srgb,var(--color-text)_25%,transparent)]"
+              type="button"
+              (click)="abrirRegistrarGasto()"
+            >
+              <span
+                class="flex items-center justify-center w-9 h-9 rounded-lg bg-[color-mix(in_srgb,#dc2626_14%,transparent)] text-[#dc2626] [&>svg]:block"
+                [innerHTML]="gastoIconHtml"
+              ></span>
+              <span class="text-[13px]" i18n="@@topbar.registroRapido.gasto">Registrar gasto</span>
+            </button>
+            <button
+              class="flex flex-col items-start gap-2 p-3 rounded-lg border border-[var(--color-divider)] bg-transparent cursor-pointer text-left transition-colors hover:bg-[color-mix(in_srgb,var(--color-text)_5%,transparent)] hover:border-[color-mix(in_srgb,var(--color-text)_25%,transparent)]"
+              type="button"
+              (click)="abrirRegistrarDeuda()"
+            >
+              <span
+                class="flex items-center justify-center w-9 h-9 rounded-lg bg-[color-mix(in_srgb,#d97706_14%,transparent)] text-[#d97706] [&>svg]:block"
+                [innerHTML]="deudaIconHtml"
+              ></span>
+              <span class="text-[13px]" i18n="@@topbar.registroRapido.deuda">Registrar deuda</span>
+            </button>
+            <button
+              class="flex flex-col items-start gap-2 p-3 rounded-lg border border-[var(--color-divider)] bg-transparent cursor-pointer text-left transition-colors hover:bg-[color-mix(in_srgb,var(--color-text)_5%,transparent)] hover:border-[color-mix(in_srgb,var(--color-text)_25%,transparent)]"
+              type="button"
+              (click)="abrirRegistrarIngreso()"
+            >
+              <span
+                class="flex items-center justify-center w-9 h-9 rounded-lg bg-[color-mix(in_srgb,#16a34a_14%,transparent)] text-[#16a34a] [&>svg]:block"
+                [innerHTML]="ingresoIconHtml"
+              ></span>
+              <span class="text-[13px]" i18n="@@topbar.registroRapido.ingreso"
+                >Registrar ingreso</span
+              >
+            </button>
+            <button
+              class="flex flex-col items-start gap-2 p-3 rounded-lg border border-[var(--color-divider)] bg-transparent cursor-pointer text-left transition-colors hover:bg-[color-mix(in_srgb,var(--color-text)_5%,transparent)] hover:border-[color-mix(in_srgb,var(--color-text)_25%,transparent)]"
+              type="button"
+              (click)="abrirRegistrarCategoria()"
+            >
+              <span
+                class="flex items-center justify-center w-9 h-9 rounded-lg bg-[color-mix(in_srgb,#2563eb_14%,transparent)] text-[#2563eb] [&>svg]:block"
+                [innerHTML]="categoriaIconHtml"
+              ></span>
+              <span class="text-[13px]" i18n="@@topbar.registroRapido.categoria"
+                >Registrar categoría</span
+              >
+            </button>
+          </div>
+          @if (quickActionError()) {
+            <div class="error-text px-0.5">{{ quickActionError() }}</div>
+          }
+        </div>
+      }
+    </div>
+
     <button
       class="btn btn-icon btn-secondary"
       type="button"

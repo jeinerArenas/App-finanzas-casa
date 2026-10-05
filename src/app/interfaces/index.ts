@@ -25,3 +25,4 @@ export * from './backend-salary-variable.interface';
 export * from './backend-asset.interface';
 export * from './salario-form.interface';
 export * from './activo-form.interface';
+export * from './dashboard-alert.interface';

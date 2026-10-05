@@ -161,7 +161,7 @@ export class IngresosComponent {
     },
     configurationRows: { keyColumn: 'key' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
     ],
     configurationPagination: { visible: true, pageSize: 10, pageSizeOptions: [10, 20, 30] },
     stickyHeader: true,
@@ -181,7 +181,7 @@ export class IngresosComponent {
     },
     configurationRows: { keyColumn: 'id_asset' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
     ],
     stickyHeader: true,
     emptyMessage: $localize`:@@ingresos.activos.vacio:Aún no hay activos registrados.`,

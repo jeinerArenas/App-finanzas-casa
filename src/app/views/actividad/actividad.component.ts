@@ -41,7 +41,7 @@ export class ActividadComponent {
       tagClass: { action: () => 'tag-outline' },
       format: { action: (row: ActividadRow) => this.actionLabels[row.action] },
     },
-    configurationPagination: { visible: true, pageSize: 20, pageSizeOptions: [10, 20, 30, 50] },
+    configurationPagination: { visible: true, pageSize: 6, pageSizeOptions: [6, 10, 20, 30, 50] },
     configurationExport: { fileName: $localize`:@@actividad.export.archivo:actividad` },
     configurationRows: { keyColumn: 'id_activity_log' },
     emptyMessage: $localize`:@@actividad.vacio:Todavía no hay actividad registrada.`,

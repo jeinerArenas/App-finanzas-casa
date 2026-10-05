@@ -27,3 +27,27 @@ export const SALARY_ICON =
 
 export const ASSET_ICON =
   '<svg width="16" height="16" viewBox="0 0 256 256" fill="none"><path d="M32 96 128 40l96 56v112a8 8 0 0 1-8 8H40a8 8 0 0 1-8-8Z" stroke="currentColor" stroke-width="14" stroke-linejoin="round"></path><line x1="96" y1="216" x2="96" y2="152" stroke="currentColor" stroke-width="14"></line><line x1="160" y1="216" x2="160" y2="152" stroke="currentColor" stroke-width="14"></line><line x1="96" y1="152" x2="160" y2="152" stroke="currentColor" stroke-width="14"></line></svg>';
+
+export const SEARCH_ICON =
+  '<svg width="14" height="14" viewBox="0 0 256 256" fill="none"><circle cx="110" cy="110" r="70" stroke="currentColor" stroke-width="16"></circle><line x1="162" y1="162" x2="216" y2="216" stroke="currentColor" stroke-width="16" stroke-linecap="round"></line></svg>';
+
+export const SORT_FUNNEL_ICON =
+  '<svg width="11" height="11" viewBox="0 0 256 256" fill="none"><path d="M32 56h192l-72 88v64l-48 24v-88Z" stroke="currentColor" stroke-width="18" stroke-linejoin="round"></path></svg>';
+
+export const EXPORT_ICON =
+  '<svg width="15" height="15" viewBox="0 0 256 256" fill="none"><path d="M80 176a48 48 0 0 1 8-95 64 64 0 0 1 124 24 40 40 0 0 1-8 79H80Z" stroke="currentColor" stroke-width="14" stroke-linejoin="round"></path><path d="M128 104v64M104 128l24-24 24 24" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+export const CHEVRON_LEFT_ICON =
+  '<svg width="13" height="13" viewBox="0 0 256 256" fill="none"><path d="M160 48 96 128l64 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+export const CHEVRON_RIGHT_ICON =
+  '<svg width="13" height="13" viewBox="0 0 256 256" fill="none"><path d="M96 48l64 80-64 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+export const FIRST_PAGE_ICON =
+  '<svg width="13" height="13" viewBox="0 0 256 256" fill="none"><line x1="56" y1="48" x2="56" y2="208" stroke="currentColor" stroke-width="22" stroke-linecap="round"></line><path d="M200 48l-64 80 64 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+export const LAST_PAGE_ICON =
+  '<svg width="13" height="13" viewBox="0 0 256 256" fill="none"><line x1="200" y1="48" x2="200" y2="208" stroke="currentColor" stroke-width="22" stroke-linecap="round"></line><path d="M56 48l64 80-64 80" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+
+export const QUICK_ACTIONS_ICON =
+  '<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><circle cx="64" cy="64" r="20"></circle><circle cx="128" cy="64" r="20"></circle><circle cx="192" cy="64" r="20"></circle><circle cx="64" cy="128" r="20"></circle><circle cx="128" cy="128" r="20"></circle><circle cx="192" cy="128" r="20"></circle><circle cx="64" cy="192" r="20"></circle><circle cx="128" cy="192" r="20"></circle><circle cx="192" cy="192" r="20"></circle></svg>';

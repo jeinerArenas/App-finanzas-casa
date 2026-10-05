@@ -239,7 +239,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 .nav-link:hover { background: color-mix(in srgb, var(--color-text) 6%, transparent); }
 .nav-link-active {
   background: color-mix(in srgb, var(--color-accent) 14%, transparent);
-  color: var(--color-accent-300);
+  color: var(--color-text);
 }
 
 /* — auth — */
@@ -303,34 +303,40 @@ textarea.input { min-height: 90px; resize: vertical; }
   display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
   flex: none; padding: 16px 22px; border-top: 1px solid var(--color-divider);
 }
-.shell-content { flex: 1; overflow: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 20px; }
+.shell-content { flex: 1; overflow: auto; padding: 24px 28px; display: flex; flex-direction: column; gap: 18px; }
 .shell-content-mobile { padding: 16px; }
 .topbar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--color-divider); }
 .topbar-mobile { flex-wrap: wrap; }
 
 /* — tables — */
-.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .table th {
-  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  text-align: left; font-size: 11px; font-weight: 600; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: 0.06em;
   color: color-mix(in srgb, var(--color-text) 60%, transparent);
-  padding: var(--space-2); border-bottom: 1px solid transparent;
+  padding: 13px var(--space-6); border-bottom: 1px solid var(--color-divider);
 }
-.table td { padding: var(--space-2); border-bottom: 1px solid transparent; }
+.table td {
+  padding: 17px var(--space-6);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-divider) 70%, transparent);
+}
 .table thead tr {
-  background: linear-gradient(to right,
-    transparent, var(--color-divider) 48px,
-    var(--color-divider) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
-}
-.table tbody tr {
-  background: linear-gradient(to right,
-    transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
-    color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+  background: var(--color-bg);
 }
 .table tbody tr:hover {
-  background:
-    linear-gradient(color-mix(in srgb, var(--color-text) 4%, transparent),
-                    color-mix(in srgb, var(--color-text) 4%, transparent)) no-repeat 0 0 / 100% 100%,
-    linear-gradient(to right,
-      transparent, color-mix(in srgb, var(--color-text) 8%, transparent) 48px,
-      color-mix(in srgb, var(--color-text) 8%, transparent) calc(100% - 48px), transparent) no-repeat bottom / 100% 1px;
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+}
+
+/* — marquee (infinite alert carousel) — */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-scroll linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
 }

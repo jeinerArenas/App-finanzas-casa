@@ -5,7 +5,7 @@ import { StatCardComponent } from '../../componentes';
 import { TablaCbzV2Component } from '../../componentes/tabla-cbz-v2/tabla-cbz-v2.component';
 import { DashboardService, GastosService, GoalService, IngresosService } from '../../servicios';
 import { HistoryRow } from '../../servicios/dashboard.service';
-import { GoalFormControls, ITableCBZ } from '../../interfaces';
+import { DashboardAlertCard, GoalFormControls, ITableCBZ } from '../../interfaces';
 import { formatCurrency } from '../../utils/currency';
 import { getErrorMessage } from '../../utils/form-errors';
 
@@ -40,7 +40,7 @@ export class DashboardComponent {
       },
       styleCell: {
         savingsFmt: (row: HistoryRow) => ({
-          color: row.savingsPositive ? 'var(--color-accent-300)' : 'var(--color-neutral-400)',
+          color: row.savingsPositive ? 'var(--grad-savings)' : 'var(--color-neutral-400)',
         }),
       },
     },
@@ -61,9 +61,29 @@ export class DashboardComponent {
     const g = this.goal();
     return !!g && this.summary().cumTotal >= Number(g.amount);
   });
-  readonly hasAlerts = computed(
-    () => this.overBudgetCategories().length > 0 || this.goalAchieved(),
+
+  readonly alertCards = computed<DashboardAlertCard[]>(() => {
+    const categoryCards: DashboardAlertCard[] = this.overBudgetCategories().map((c) => ({
+      id: `budget-${c.name}`,
+      kind: 'warning',
+      categoryName: c.name,
+    }));
+    if (!this.goalAchieved()) return categoryCards;
+    return [...categoryCards, { id: 'goal', kind: 'goal' }];
+  });
+
+  readonly showAlertCarousel = computed<boolean>(() => this.alertCards().length > 2);
+
+  readonly alertMarqueeSeconds = computed<number>(() =>
+    Math.max(this.alertCards().length * 4, 12),
   );
+
+  readonly displayedAlertCards = computed<DashboardAlertCard[]>(() => {
+    const cards = this.alertCards();
+    return this.showAlertCarousel() ? [...cards, ...cards] : cards;
+  });
+
+  readonly hasAlerts = computed(() => this.alertCards().length > 0);
 
   readonly goalForm: FormGroup<GoalFormControls> = this.fb.group({
     name: this.fb.control('', Validators.required),

@@ -46,11 +46,12 @@ export class UsuariosComponent {
     },
     configurationRows: { keyColumn: 'id_user' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
       {
         id: 'eliminar',
         icon: TRASH_ICON,
         label: $localize`:@@comun.eliminar:Eliminar`,
+        variant: 'danger',
         show: (usuario: BackendUser) => usuario.id_user !== this.currentUserId(),
       },
     ],

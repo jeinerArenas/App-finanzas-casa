@@ -77,15 +77,16 @@ export class DeudasComponent {
         estado: (deuda: BackendDebt) => this.estadoTag(deuda).label,
       },
     },
-    configurationPagination: { visible: true, pageSize: 10, pageSizeOptions: [10, 20, 30, 40] },
+    configurationPagination: { visible: true, pageSize: 6, pageSizeOptions: [6, 10, 20, 30, 40] },
     configurationExport: { fileName: $localize`:@@deudas.export.archivo:deudas` },
     configurationRows: { keyColumn: 'id_debt' },
     configurationActions: [
-      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar` },
+      { id: 'editar', icon: EDIT_ICON, label: $localize`:@@comun.editar:Editar`, variant: 'edit' },
       {
         id: 'eliminar',
         icon: TRASH_ICON,
         label: $localize`:@@comun.eliminar:Eliminar`,
+        variant: 'danger',
         show: () => this.canDelete(),
       },
     ],
